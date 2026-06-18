@@ -1,1084 +1,150 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>De Souza x Bloomfield World Cup Sweepstake</title>
-  <meta name="description" content="Family FIFA World Cup 2026 sweepstake tracker for the De Souza x Bloomfield family." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root,
-    [data-theme="light"] {
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-
-      --space-1: 0.25rem;
-      --space-2: 0.5rem;
-      --space-3: 0.75rem;
-      --space-4: 1rem;
-      --space-5: 1.25rem;
-      --space-6: 1.5rem;
-      --space-8: 2rem;
-      --space-10: 2.5rem;
-      --space-12: 3rem;
-      --space-16: 4rem;
-
-      --color-bg: #f8f6f1;
-      --color-surface: #ffffff;
-      --color-surface-2: #f5f2ea;
-      --color-surface-offset: #ece6da;
-      --color-border: rgba(34, 30, 24, 0.12);
-      --color-divider: rgba(34, 30, 24, 0.08);
-      --color-text: #171412;
-      --color-text-muted: #625a4f;
-      --color-text-faint: #8b8379;
-      --color-text-inverse: #fcfbf7;
-
-      --color-primary: #111111;
-      --color-primary-hover: #272727;
-      --color-secondary: #c59b32;
-      --color-red: #cf2e2e;
-      --color-blue: #2d54b8;
-      --color-green: #1f8a52;
-      --color-chip: rgba(197, 155, 50, 0.14);
-      --color-good: #2d8a56;
-      --color-bad: #b33737;
-
-      --radius-sm: 0.5rem;
-      --radius-md: 0.9rem;
-      --radius-lg: 1.25rem;
-      --radius-xl: 1.75rem;
-      --radius-full: 999px;
-
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
-      --shadow-md: 0 8px 28px rgba(0,0,0,0.08);
-      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-
-      --font-display: 'Barlow', Arial, sans-serif;
-      --font-body: 'Outfit', Arial, sans-serif;
-      --content: 1180px;
-    }
-
-    [data-theme="dark"] {
-      --color-bg: #0f1218;
-      --color-surface: #151a22;
-      --color-surface-2: #1a2130;
-      --color-surface-offset: #202938;
-      --color-border: rgba(244, 239, 229, 0.12);
-      --color-divider: rgba(244, 239, 229, 0.08);
-      --color-text: #f5f0e7;
-      --color-text-muted: #c5bcaf;
-      --color-text-faint: #92897c;
-      --color-text-inverse: #10131a;
-      --color-primary: #f5f0e7;
-      --color-primary-hover: #ffffff;
-      --color-secondary: #d7ae43;
-      --color-red: #e14444;
-      --color-blue: #5b82ea;
-      --color-green: #3cbf78;
-      --color-chip: rgba(215, 174, 67, 0.16);
-      --color-good: #54d08d;
-      --color-bad: #ef7777;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.24), 0 12px 32px rgba(0,0,0,0.26);
-      --shadow-md: 0 18px 48px rgba(0,0,0,0.34);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      line-height: 1.55;
-      background:
-        radial-gradient(circle at top left, rgba(225, 68, 68, 0.14), transparent 28%),
-        radial-gradient(circle at top right, rgba(91, 130, 234, 0.16), transparent 30%),
-        radial-gradient(circle at bottom center, rgba(215, 174, 67, 0.14), transparent 34%),
-        var(--color-bg);
-      color: var(--color-text);
-    }
-
-    img, svg { display: block; max-width: 100%; }
-    button, input, select, textarea { font: inherit; }
-    a { color: inherit; }
-    :focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 3px; }
-
-    .skip-link {
-      position: absolute;
-      left: var(--space-4);
-      top: -40px;
-      background: var(--color-secondary);
-      color: #111;
-      padding: var(--space-2) var(--space-3);
-      border-radius: var(--radius-sm);
-      z-index: 100;
-      text-decoration: none;
-    }
-    .skip-link:focus { top: var(--space-4); }
-
-    .container {
-      width: min(calc(100% - 2rem), var(--content));
-      margin: 0 auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(16px);
-      background: color-mix(in srgb, var(--color-bg) 74%, transparent);
-      border-bottom: 1px solid var(--color-divider);
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-4);
-      padding: var(--space-4) 0;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 52px;
-      height: 52px;
-      padding: 0.45rem;
-      border-radius: 1rem;
-      background: linear-gradient(135deg, rgba(225,68,68,0.18), rgba(91,130,234,0.18) 50%, rgba(215,174,67,0.22));
-      border: 1px solid var(--color-border);
-      box-shadow: var(--shadow-sm);
-      color: var(--color-primary);
-      flex: 0 0 auto;
-    }
-
-    .brand-copy h1 {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      line-height: 1;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-
-    .brand-copy p {
-      margin: 0.25rem 0 0;
-      color: var(--color-text-muted);
-      font-size: var(--text-sm);
-    }
-
-    .top-actions {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2);
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-full);
-      min-height: 44px;
-      padding: 0.7rem 1rem;
-      background: var(--color-surface);
-      color: var(--color-text);
-      transition: transform var(--transition), background var(--transition), border-color var(--transition);
-      cursor: pointer;
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: linear-gradient(90deg, var(--color-red), var(--color-blue) 60%, var(--color-secondary));
-      color: #fff;
-      border-color: transparent;
-    }
-
-    main {
-      padding: var(--space-8) 0 var(--space-16);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.35fr 0.95fr;
-      gap: var(--space-6);
-      align-items: stretch;
-      margin-bottom: var(--space-8);
-    }
-
-    .panel {
-      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface-2) 100%, transparent));
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .hero-panel {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .hero-panel::after {
-      content: "";
-      position: absolute;
-      inset: auto -10% -30% auto;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(215,174,67,0.14), transparent 70%);
-      z-index: -1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.45rem 0.8rem;
-      border-radius: var(--radius-full);
-      background: var(--color-chip);
-      color: var(--color-secondary);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-weight: 700;
-      margin-bottom: var(--space-4);
-    }
-
-    .hero h2 {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      line-height: 0.98;
-      text-transform: uppercase;
-      max-width: 11ch;
-    }
-
-    .hero p {
-      color: var(--color-text-muted);
-      max-width: 62ch;
-      margin: var(--space-4) 0 0;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-3);
-      margin-top: var(--space-5);
-    }
-
-    .stat-card {
-      padding: var(--space-4);
-      border-radius: var(--radius-lg);
-      background: color-mix(in srgb, var(--color-surface-offset) 72%, transparent);
-      border: 1px solid var(--color-border);
-    }
-
-    .stat-card strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      margin-bottom: 0.25rem;
-    }
-
-    .mini-note {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-    }
-
-    .logo-showcase {
-      display: grid;
-      place-items: center;
-      min-height: 100%;
-      text-align: center;
-      gap: var(--space-4);
-      background:
-        linear-gradient(135deg, rgba(225,68,68,0.08), transparent 30%),
-        linear-gradient(225deg, rgba(91,130,234,0.1), transparent 35%),
-        linear-gradient(180deg, var(--color-surface), var(--color-surface-2));
-    }
-
-    .crest-wrap {
-      width: min(100%, 320px);
-      aspect-ratio: 1;
-      border-radius: 32px;
-      padding: 1.2rem;
-      background: color-mix(in srgb, var(--color-surface) 76%, transparent);
-      border: 1px solid var(--color-border);
-      box-shadow: var(--shadow-md);
-    }
-
-    .logo-showcase p { margin: 0; color: var(--color-text-muted); }
-
-    .section-title {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: var(--space-3);
-      margin-bottom: var(--space-4);
-      flex-wrap: wrap;
-    }
-
-    .section-title h3 {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      text-transform: uppercase;
-      line-height: 1;
-    }
-
-    .cards-2,
-    .cards-3 {
-      display: grid;
-      gap: var(--space-5);
-      margin-bottom: var(--space-6);
-    }
-
-    .cards-2 { grid-template-columns: 1.1fr 0.9fr; }
-    .cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-    .list,
-    .points-list {
-      display: grid;
-      gap: var(--space-3);
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .list li,
-    .points-list li {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--space-4);
-      padding: var(--space-3) 0;
-      border-bottom: 1px solid var(--color-divider);
-    }
-
-    .list li:last-child,
-    .points-list li:last-child { border-bottom: 0; padding-bottom: 0; }
-    .points-list span:last-child,
-    .list span:last-child { color: var(--color-secondary); font-weight: 700; white-space: nowrap; }
-
-    .scoring-note {
-      margin-top: var(--space-4);
-      padding: var(--space-4);
-      border-radius: var(--radius-lg);
-      background: color-mix(in srgb, var(--color-chip) 90%, transparent);
-      color: var(--color-text);
-      border: 1px solid color-mix(in srgb, var(--color-secondary) 28%, transparent);
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--color-border);
-      background: var(--color-surface);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 720px;
-    }
-
-    th, td {
-      padding: 0.95rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid var(--color-divider);
-      vertical-align: top;
-    }
-
-    th {
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--color-text-muted);
-      background: color-mix(in srgb, var(--color-surface-2) 85%, transparent);
-    }
-
-    tbody tr:hover { background: color-mix(in srgb, var(--color-surface-offset) 55%, transparent); }
-    .owner-pill,
-    .group-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.35rem 0.65rem;
-      border-radius: var(--radius-full);
-      font-size: var(--text-xs);
-      border: 1px solid var(--color-border);
-      background: color-mix(in srgb, var(--color-surface-2) 92%, transparent);
-      white-space: nowrap;
-    }
-
-    .owner-pill::before {
-      content: "";
-      width: 0.55rem;
-      height: 0.55rem;
-      border-radius: 50%;
-      background: linear-gradient(90deg, var(--color-red), var(--color-blue), var(--color-secondary));
-    }
-
-    .rank {
-      display: inline-grid;
-      place-items: center;
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      background: color-mix(in srgb, var(--color-secondary) 18%, transparent);
-      color: var(--color-secondary);
-      font-weight: 800;
-      font-family: var(--font-display);
-    }
-
-    .fixture-grid {
-      display: grid;
-      gap: var(--space-4);
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: var(--space-3);
-    }
-
-    .field {
-      display: grid;
-      gap: 0.45rem;
-    }
-
-    .field label {
-      font-size: var(--text-xs);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      font-weight: 700;
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      min-height: 46px;
-      border-radius: 0.95rem;
-      border: 1px solid var(--color-border);
-      background: var(--color-surface-2);
-      color: var(--color-text);
-      padding: 0.85rem 0.95rem;
-    }
-
-    .field textarea { min-height: 110px; resize: vertical; }
-
-    .toolbar {
-      display: flex;
-      gap: var(--space-3);
-      flex-wrap: wrap;
-      margin-top: var(--space-4);
-    }
-
-    .matches-list {
-      display: grid;
-      gap: var(--space-3);
-      margin-top: var(--space-4);
-    }
-
-    .match-card {
-      display: grid;
-      gap: var(--space-2);
-      padding: var(--space-4);
-      border-radius: var(--radius-lg);
-      background: color-mix(in srgb, var(--color-surface-2) 80%, transparent);
-      border: 1px solid var(--color-border);
-    }
-
-    .match-top,
-    .match-meta {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--space-3);
-      flex-wrap: wrap;
-    }
-
-    .scoreline {
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      text-transform: uppercase;
-    }
-
-    .positive { color: var(--color-good); font-weight: 700; }
-    .negative { color: var(--color-bad); font-weight: 700; }
-    .muted { color: var(--color-text-muted); }
-
-    .update-steps {
-      counter-reset: steps;
-      display: grid;
-      gap: var(--space-4);
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .update-steps li {
-      position: relative;
-      padding-left: 3.25rem;
-      min-height: 2.6rem;
-    }
-
-    .update-steps li::before {
-      counter-increment: steps;
-      content: counter(steps);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 2.2rem;
-      height: 2.2rem;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--color-red), var(--color-blue), var(--color-secondary));
-      color: #fff;
-      font-weight: 800;
-      font-family: var(--font-display);
-    }
-
-    .footer-note {
-      padding: var(--space-5);
-      border-radius: var(--radius-lg);
-      background: color-mix(in srgb, var(--color-surface-offset) 66%, transparent);
-      border: 1px dashed color-mix(in srgb, var(--color-secondary) 36%, transparent);
-    }
-
-    code.inline {
-      padding: 0.15rem 0.4rem;
-      border-radius: 0.45rem;
-      background: color-mix(in srgb, var(--color-surface-2) 88%, transparent);
-      border: 1px solid var(--color-border);
-      font-size: 0.92em;
-    }
-
-    @media (max-width: 1024px) {
-      .hero,
-      .cards-2,
-      .cards-3,
-      .fixture-grid,
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 680px) {
-      .container { width: min(calc(100% - 1rem), var(--content)); }
-      .panel { padding: var(--space-5); }
-      .hero h2 { max-width: 12ch; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .topbar { align-items: flex-start; }
-      .brand { align-items: flex-start; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>De Souza x Bloomfield World Cup Sweepstake</title>
+<meta name="description" content="Family FIFA World Cup 2026 sweepstake tracker." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="light"]{--bg:#f7f3eb;--surface:#fff;--surface2:#f0e8da;--text:#171412;--muted:#655c50;--border:rgba(23,20,18,.12);--gold:#c59b32;--red:#cf2e2e;--blue:#2d54b8;--good:#2d8a56;--bad:#b33737;--radius:24px;--shadow:0 18px 40px rgba(0,0,0,.08);--font-display:'Barlow',Arial,sans-serif;--font-body:'Outfit',Arial,sans-serif}
+[data-theme="dark"]{--bg:#0f1218;--surface:#151a22;--surface2:#1a2130;--text:#f5f0e7;--muted:#c5bcaf;--border:rgba(245,240,231,.12);--gold:#d7ae43;--red:#e14444;--blue:#5b82ea;--good:#54d08d;--bad:#ef7777;--shadow:0 18px 48px rgba(0,0,0,.34)}
+*{box-sizing:border-box}body{margin:0;font-family:var(--font-body);background:radial-gradient(circle at top left,rgba(225,68,68,.12),transparent 28%),radial-gradient(circle at top right,rgba(91,130,234,.12),transparent 30%),radial-gradient(circle at bottom center,rgba(215,174,67,.12),transparent 34%),var(--bg);color:var(--text)}
+a{color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}.container{width:min(calc(100% - 2rem),1200px);margin:0 auto}header{position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--border)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 0;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:.9rem}.mark{width:54px;height:54px;border-radius:18px;padding:.45rem;background:linear-gradient(135deg,rgba(225,68,68,.18),rgba(91,130,234,.18) 50%,rgba(215,174,67,.22));border:1px solid var(--border);box-shadow:var(--shadow)}.brand h1{margin:0;font-family:var(--font-display);font-size:1.15rem;line-height:1;text-transform:uppercase}.brand p{margin:.25rem 0 0;color:var(--muted);font-size:.92rem}.btn{border:1px solid var(--border);border-radius:999px;min-height:44px;padding:.72rem 1rem;background:var(--surface);color:var(--text)}.btn-primary{background:linear-gradient(90deg,var(--red),var(--blue) 60%,var(--gold));color:#fff;border-color:transparent}.btn-ghost{background:color-mix(in srgb,var(--surface) 88%,transparent)}main{padding:1.25rem 0 3rem}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem;margin-bottom:1rem}.panel{background:linear-gradient(180deg,color-mix(in srgb,var(--surface) 92%,transparent),color-mix(in srgb,var(--surface2) 100%,transparent));border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow)}.hero h2,.section-title{font-family:var(--font-display);text-transform:uppercase;margin:0}.hero h2{font-size:clamp(2rem,4vw,3.6rem);line-height:.95;max-width:12ch}.eyebrow{display:inline-flex;padding:.45rem .75rem;border-radius:999px;background:rgba(197,155,50,.12);color:var(--gold);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;margin-bottom:1rem}.hero p{color:var(--muted);max-width:68ch}.hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1rem}.stat{background:color-mix(in srgb,var(--surface2) 75%,transparent);border:1px solid var(--border);border-radius:18px;padding:1rem}.stat strong{display:block;font-family:var(--font-display);font-size:1.6rem}.logo-wrap{display:grid;place-items:center;min-height:100%;text-align:center}.logo-shell{width:min(100%,320px);aspect-ratio:1;padding:1.1rem;border-radius:30px;border:1px solid var(--border);box-shadow:var(--shadow);background:var(--surface)}.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:1rem;margin-top:1rem}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}.tab{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:.7rem .95rem}.tab.active{background:linear-gradient(90deg,var(--red),var(--blue));color:#fff;border-color:transparent}.hidden{display:none !important}.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:18px;background:var(--surface)}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:.9rem 1rem;border-bottom:1px solid rgba(0,0,0,.08);text-align:left;vertical-align:top}th{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:color-mix(in srgb,var(--surface2) 85%,transparent)}.pill{display:inline-flex;align-items:center;gap:.35rem;padding:.32rem .62rem;border-radius:999px;background:color-mix(in srgb,var(--surface2) 88%,transparent);border:1px solid var(--border);font-size:.78rem;white-space:nowrap}.rank{display:inline-grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:rgba(215,174,67,.16);color:var(--gold);font-family:var(--font-display);font-weight:800}.section-title{display:flex;justify-content:space-between;align-items:end;gap:.75rem;flex-wrap:wrap;font-size:clamp(1.3rem,2vw,2rem);margin-bottom:.85rem}.subtle{color:var(--muted)}.controls{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}.form-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}.field{display:grid;gap:.4rem}.field label{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700}.field input,.field select,.field textarea{width:100%;min-height:46px;border-radius:14px;border:1px solid var(--border);background:var(--surface2);color:var(--text);padding:.8rem .9rem}.field textarea{min-height:105px;resize:vertical}.list{display:grid;gap:.65rem;margin:0;padding:0;list-style:none}.list li{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid rgba(0,0,0,.08)}.list li:last-child{border-bottom:0}.matchs{display:grid;gap:.65rem;margin-top:1rem}.match{padding:1rem;border:1px solid var(--border);border-radius:18px;background:color-mix(in srgb,var(--surface2) 82%,transparent)}.match-top,.match-meta{display:flex;justify-content:space-between;gap:.75rem;flex-wrap:wrap}.scoreline{font-family:var(--font-display);font-size:1.1rem;text-transform:uppercase}.note{padding:1rem;border-radius:18px;background:color-mix(in srgb,var(--surface2) 72%,transparent);border:1px dashed color-mix(in srgb,var(--gold) 36%,transparent)}@media (max-width: 1024px){.hero,.grid2,.grid3,.form-grid{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr 1fr}}@media (max-width:680px){.container{width:min(calc(100% - 1rem),1200px)}.hero-grid{grid-template-columns:1fr}.panel{padding:1rem}}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header>
-    <div class="container topbar">
-      <div class="brand" aria-label="De Souza x Bloomfield sweepstake brand">
-        <div class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="crestGradient" x1="8" y1="8" x2="92" y2="92" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#CF2E2E"/>
-                <stop offset="0.55" stop-color="#2D54B8"/>
-                <stop offset="1" stop-color="#D7AE43"/>
-              </linearGradient>
-            </defs>
-            <path d="M50 8L82 20V47C82 67.5 67.9 83.2 50 90C32.1 83.2 18 67.5 18 47V20L50 8Z" stroke="url(#crestGradient)" stroke-width="6" fill="rgba(255,255,255,0.03)"/>
-            <path d="M31 55C39 47.7 43.3 34.5 43.8 22M69 55C61 47.7 56.7 34.5 56.2 22" stroke="currentColor" stroke-width="5.2" stroke-linecap="round"/>
-            <path d="M34 68H66" stroke="currentColor" stroke-width="5.2" stroke-linecap="round"/>
-            <circle cx="50" cy="47" r="11" stroke="url(#crestGradient)" stroke-width="5"/>
-            <path d="M50 36V58" stroke="currentColor" stroke-width="5.2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="brand-copy">
-          <h1>De Souza x Bloomfield</h1>
-          <p>World Cup 2026 family sweepstake tracker</p>
-        </div>
+<a class="skip-link" href="#main">Skip to content</a>
+<header>
+  <div class="container topbar">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g" x1="8" y1="8" x2="92" y2="92"><stop stop-color="#CF2E2E"/><stop offset="0.55" stop-color="#2D54B8"/><stop offset="1" stop-color="#D7AE43"/></linearGradient></defs>
+          <path d="M50 8L82 20V47C82 67.5 67.9 83.2 50 90C32.1 83.2 18 67.5 18 47V20L50 8Z" stroke="url(#g)" stroke-width="6"/>
+          <circle cx="50" cy="47" r="11" stroke="url(#g)" stroke-width="5"/>
+        </svg>
       </div>
-      <div class="top-actions">
-        <button class="btn" type="button" data-theme-toggle aria-label="Switch theme">🌗 Theme</button>
-        <button class="btn btn-primary" type="button" id="downloadData">Download match data</button>
-      </div>
+      <div><h1>De Souza x Bloomfield</h1><p>World Cup 2026 sweepstake</p></div>
     </div>
-  </header>
-
-  <main id="main" class="container">
-    <section class="hero" aria-labelledby="hero-title">
-      <article class="panel hero-panel">
-        <div class="eyebrow">We Are 26 style tracker</div>
-        <h2 id="hero-title">Family sweepstake. Live standings. One simple page.</h2>
-        <p>This page gives each family member two groups, tracks match points as the tournament unfolds, and automatically updates the leaderboard as soon as you enter results. The palette leans on the 2026 World Cup identity direction: a mostly black, white and gold base, with red and blue accents woven in for a North America tournament feel.</p>
-        <div class="hero-grid" aria-label="Quick facts">
-          <div class="stat-card"><strong>6</strong><span class="mini-note">Family players</span></div>
-          <div class="stat-card"><strong>12</strong><span class="mini-note">Groups assigned</span></div>
-          <div class="stat-card"><strong>48</strong><span class="mini-note">Teams supported</span></div>
-        </div>
-      </article>
-
-      <aside class="panel logo-showcase" aria-labelledby="logo-title">
-        <div class="crest-wrap">
-          <svg viewBox="0 0 320 320" role="img" aria-labelledby="logo-title logo-desc" xmlns="http://www.w3.org/2000/svg">
-            <title id="logo-title">De Souza x Bloomfield World Cup Sweepstake logo</title>
-            <desc id="logo-desc">A custom crest featuring a trophy silhouette, football lines and gold, red and blue gradients inspired by a 2026 World Cup themed palette.</desc>
-            <defs>
-              <linearGradient id="heroGradient" x1="44" y1="44" x2="276" y2="276" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#CF2E2E"/>
-                <stop offset="0.52" stop-color="#2D54B8"/>
-                <stop offset="1" stop-color="#D7AE43"/>
-              </linearGradient>
-              <linearGradient id="ballGradient" x1="106" y1="196" x2="214" y2="124" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#F5F0E7"/>
-                <stop offset="1" stop-color="#D7AE43"/>
-              </linearGradient>
-            </defs>
-            <rect x="18" y="18" width="284" height="284" rx="36" fill="rgba(255,255,255,0.02)" stroke="url(#heroGradient)" stroke-width="6"/>
-            <path d="M160 46L240 76V146C240 197 205 236 160 254C115 236 80 197 80 146V76L160 46Z" fill="rgba(255,255,255,0.03)" stroke="url(#heroGradient)" stroke-width="8"/>
-            <path d="M116 104C136 85 147 57 148 78C149 101 137 135 119 154" stroke="#F5F0E7" stroke-width="10" stroke-linecap="round"/>
-            <path d="M204 104C184 85 173 57 172 78C171 101 183 135 201 154" stroke="#F5F0E7" stroke-width="10" stroke-linecap="round"/>
-            <path d="M121 197H199" stroke="#F5F0E7" stroke-width="11" stroke-linecap="round"/>
-            <circle cx="160" cy="160" r="34" fill="none" stroke="url(#ballGradient)" stroke-width="9"/>
-            <path d="M160 127V194" stroke="#F5F0E7" stroke-width="10" stroke-linecap="round"/>
-            <path d="M110 242H210" stroke="url(#heroGradient)" stroke-width="8" stroke-linecap="round"/>
-            <text x="160" y="282" text-anchor="middle" fill="#F5F0E7" font-size="24" font-family="Barlow, Arial, sans-serif" font-weight="800" letter-spacing="4">DXB 26</text>
-          </svg>
-        </div>
-        <p>Custom embedded SVG logo, so you do not need a separate image file.</p>
-      </aside>
-    </section>
-
-    <section class="cards-2" aria-label="Scoring and setup">
-      <article class="panel">
-        <div class="section-title">
-          <h3>Scoring system</h3>
-          <span class="muted">Balanced for drama and simplicity</span>
-        </div>
-        <ul class="points-list">
-          <li><span>Group stage win by one of your teams</span><span>3 pts</span></li>
-          <li><span>Group stage draw by one of your teams</span><span>1 pt</span></li>
-          <li><span>Bonus for finishing 1st in a group</span><span>5 pts</span></li>
-          <li><span>Bonus for finishing 2nd in a group</span><span>3 pts</span></li>
-          <li><span>Round of 32 qualification</span><span>2 pts</span></li>
-          <li><span>Round of 16 qualification</span><span>3 pts</span></li>
-          <li><span>Quarter-final qualification</span><span>5 pts</span></li>
-          <li><span>Semi-final qualification</span><span>7 pts</span></li>
-          <li><span>Final qualification</span><span>10 pts</span></li>
-          <li><span>Team wins the World Cup</span><span>15 pts</span></li>
-        </ul>
-        <div class="scoring-note"><strong>Suggested tiebreaker:</strong> if two family members finish level on points, the winner is the person whose teams have the better combined goal difference, then combined goals scored.</div>
-      </article>
-
-      <article class="panel">
-        <div class="section-title">
-          <h3>Why this works</h3>
-          <span class="muted">Keeps everyone alive deep into the tournament</span>
-        </div>
-        <ul class="list">
-          <li><span>Early interest</span><span>Match points matter immediately</span></li>
-          <li><span>Knockout tension</span><span>Later rounds are worth more</span></li>
-          <li><span>No overcomplication</span><span>Easy to update after matches</span></li>
-          <li><span>Fair across two groups</span><span>Every person starts with similar scope</span></li>
-          <li><span>Leaderboard clarity</span><span>Auto totals per owner</span></li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="panel" aria-labelledby="assignments-title">
-      <div class="section-title">
-        <h3 id="assignments-title">Group assignments</h3>
-        <span class="muted">Updated with the confirmed 2026 group-stage countries</span>
+    <div class="controls"><button class="btn" id="themeBtn" type="button">🌗 Theme</button><button class="btn btn-primary" id="downloadBtn" type="button">Download data</button></div>
+  </div>
+</header>
+<main id="main" class="container">
+  <section class="hero">
+    <article class="panel">
+      <div class="eyebrow">Family viewing mode</div>
+      <h2>One screen for the full family leaderboard.</h2>
+      <p>This version is built for group viewing: a big shared leaderboard, one scorekeeper control set, and one-button focus views for each family member. Use the name buttons to flip the display to a single person or back to the full board.</p>
+      <div class="hero-grid">
+        <div class="stat"><strong>6</strong><span class="subtle">Family players</span></div>
+        <div class="stat"><strong>12</strong><span class="subtle">Groups assigned</span></div>
+        <div class="stat"><strong>48</strong><span class="subtle">Teams tracked</span></div>
       </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Family member</th>
-              <th scope="col">Assigned groups</th>
-              <th scope="col">Teams from those groups</th>
-              <th scope="col">Current score</th>
-            </tr>
-          </thead>
-          <tbody id="assignmentTableBody"></tbody>
-        </table>
+    </article>
+    <aside class="panel logo-wrap">
+      <div class="logo-shell">
+        <svg viewBox="0 0 320 320" role="img" aria-label="Custom sweepstake crest" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="heroGradient" x1="44" y1="44" x2="276" y2="276"><stop stop-color="#CF2E2E"/><stop offset="0.52" stop-color="#2D54B8"/><stop offset="1" stop-color="#D7AE43"/></linearGradient>
+            <linearGradient id="ballGradient" x1="106" y1="196" x2="214" y2="124"><stop stop-color="#F5F0E7"/><stop offset="1" stop-color="#D7AE43"/></linearGradient>
+          </defs>
+          <rect x="18" y="18" width="284" height="284" rx="36" fill="rgba(255,255,255,0.02)" stroke="url(#heroGradient)" stroke-width="6"/>
+          <path d="M160 46L240 76V146C240 197 205 236 160 254C115 236 80 197 80 146V76L160 46Z" fill="rgba(255,255,255,0.03)" stroke="url(#heroGradient)" stroke-width="8"/>
+          <path d="M116 104C136 85 147 57 148 78C149 101 137 135 119 154" stroke="#F5F0E7" stroke-width="10" stroke-linecap="round"/>
+          <path d="M204 104C184 85 173 57 172 78C171 101 183 135 201 154" stroke="#F5F0E7" stroke-width="10" stroke-linecap="round"/>
+          <path d="M121 197H199" stroke="#F5F0E7" stroke-width="11" stroke-linecap="round"/>
+          <circle cx="160" cy="160" r="34" fill="none" stroke="url(#ballGradient)" stroke-width="9"/>
+        </svg>
       </div>
-    </section>
-
-    <section class="cards-3" style="margin-top: 2rem;" aria-label="Leaderboard and editing tools">
-      <article class="panel" style="grid-column: span 2;">
-        <div class="section-title">
-          <h3>Live leaderboard</h3>
-          <span class="muted">Calculated from the match entries below</span>
+      <p style="margin:.75rem 0 0;color:var(--muted)">Embedded SVG logo, no external image needed.</p>
+    </aside>
+  </section>
+  <section class="panel">
+    <div class="section-title"><h3>Focus screens</h3><span class="subtle">Tap a name to spotlight their view</span></div>
+    <div class="tabs" id="focusTabs">
+      <button class="tab active" data-focus="all" type="button">All</button>
+      <button class="tab" data-focus="Michelle" type="button">Michelle</button>
+      <button class="tab" data-focus="Caleb" type="button">Caleb</button>
+      <button class="tab" data-focus="Anton" type="button">Anton</button>
+      <button class="tab" data-focus="Jade" type="button">Jade</button>
+      <button class="tab" data-focus="Henry" type="button">Henry</button>
+      <button class="tab" data-focus="Cloe" type="button">Cloe</button>
+    </div>
+  </section>
+  <section class="grid2">
+    <article class="panel">
+      <div class="section-title"><h3>Leaderboard</h3><span class="subtle">Ranked by points, then goal difference, then goals scored</span></div>
+      <div class="table-wrap"><table><thead><tr><th>Rank</th><th>Owner</th><th>Groups</th><th>Teams</th><th>Pts</th><th>GD</th><th>GF</th></tr></thead><tbody id="leaderboardBody"></tbody></table></div>
+    </article>
+    <article class="panel">
+      <div class="section-title"><h3>Scorekeeper</h3><span class="subtle">Only you should edit results</span></div>
+      <form id="matchForm">
+        <div class="form-grid">
+          <div class="field"><label for="matchTeam">Tracked team</label><select id="matchTeam"></select></div>
+          <div class="field"><label for="opponent">Opponent</label><input id="opponent" type="text" placeholder="e.g. Argentina" required /></div>
+          <div class="field"><label for="goalsFor">Goals for</label><input id="goalsFor" type="number" min="0" step="1" required /></div>
+          <div class="field"><label for="goalsAgainst">Goals against</label><input id="goalsAgainst" type="number" min="0" step="1" required /></div>
+          <div class="field"><label for="stage">Stage</label><select id="stage"><option value="group">Group stage match</option><option value="group-first">Finished 1st in group</option><option value="group-second">Finished 2nd in group</option><option value="r32">Qualified for round of 32</option><option value="r16">Qualified for round of 16</option><option value="quarter">Qualified for quarter-finals</option><option value="semi">Qualified for semi-finals</option><option value="final">Qualified for final</option><option value="winner">Won World Cup</option></select></div>
+          <div class="field" style="grid-column:1/-1"><label for="notes">Notes</label><textarea id="notes" placeholder="Optional notes"></textarea></div>
         </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Rank</th>
-                <th scope="col">Owner</th>
-                <th scope="col">Groups</th>
-                <th scope="col">Teams tracked</th>
-                <th scope="col">Points</th>
-                <th scope="col">Goal diff</th>
-                <th scope="col">Goals scored</th>
-              </tr>
-            </thead>
-            <tbody id="leaderboardBody"></tbody>
-          </table>
-        </div>
-      </article>
-
-      <aside class="panel">
-        <div class="section-title">
-          <h3>Quick controls</h3>
-        </div>
-        <ul class="list">
-          <li><span>Seed sample data</span><span>See the page working</span></li>
-          <li><span>Clear results</span><span>Reset to zero</span></li>
-          <li><span>Export data</span><span>Save JSON backup</span></li>
-        </ul>
-        <div class="toolbar">
-          <button class="btn" id="seedSample" type="button">Load sample matches</button>
-          <button class="btn" id="clearMatches" type="button">Clear all</button>
-        </div>
-      </aside>
-    </section>
-
-    <section class="fixture-grid" aria-label="Match tracker and update guide">
-      <article class="panel">
-        <div class="section-title">
-          <h3>Add result</h3>
-          <span class="muted">Use this after every game involving one of your teams</span>
-        </div>
-        <form id="matchForm">
-          <div class="form-grid">
-            <div class="field">
-              <label for="matchTeam">Tracked team</label>
-              <select id="matchTeam" required></select>
-            </div>
-            <div class="field">
-              <label for="opponent">Opponent</label>
-              <input id="opponent" name="opponent" type="text" placeholder="e.g. Argentina" required />
-            </div>
-            <div class="field">
-              <label for="goalsFor">Goals for</label>
-              <input id="goalsFor" name="goalsFor" type="number" min="0" step="1" required />
-            </div>
-            <div class="field">
-              <label for="goalsAgainst">Goals against</label>
-              <input id="goalsAgainst" name="goalsAgainst" type="number" min="0" step="1" required />
-            </div>
-            <div class="field">
-              <label for="stage">Stage</label>
-              <select id="stage" required>
-                <option value="group">Group stage match</option>
-                <option value="group-first">Finished 1st in group</option>
-                <option value="group-second">Finished 2nd in group</option>
-                <option value="r32">Qualified for round of 32</option>
-                <option value="r16">Qualified for round of 16</option>
-                <option value="quarter">Qualified for quarter-finals</option>
-                <option value="semi">Qualified for semi-finals</option>
-                <option value="final">Qualified for final</option>
-                <option value="winner">Won World Cup</option>
-              </select>
-            </div>
-            <div class="field" style="grid-column: 1 / -1;">
-              <label for="notes">Notes</label>
-              <textarea id="notes" name="notes" placeholder="Optional note, such as date, venue or penalty shootout context."></textarea>
-            </div>
-          </div>
-          <div class="toolbar">
-            <button class="btn btn-primary" type="submit">Add to tracker</button>
-          </div>
-        </form>
-
-        <div class="matches-list" id="matchesList" aria-live="polite"></div>
-      </article>
-
-      <article class="panel">
-        <div class="section-title">
-          <h3>How to keep it updated</h3>
-          <span class="muted">GitHub-friendly workflow</span>
-        </div>
-        <ol class="update-steps">
-          <li>Upload this single HTML file to a GitHub repository, then turn on GitHub Pages in the repository settings.</li>
-          <li>Open the live page after each matchday and use the form to enter results for any tracked team that played.</li>
-          <li>After you add or adjust results, click <span class="positive">Download match data</span> and save the JSON backup to your computer.</li>
-          <li>For a permanent public update on GitHub, open the HTML file, find the <code class="inline">matchLog</code> array near the bottom, paste in the latest JSON, commit, and push.</li>
-          <li>If you ever need to change ownership or fix a team name, edit the <code class="inline">participants</code> data block near the bottom of this file and commit the update to GitHub.</li>
-        </ol>
-        <div class="footer-note" style="margin-top: 1.5rem;">
-          <strong>Simple setup option:</strong> keep using the page locally and only update GitHub every few days. The scoreboard recalculates automatically from the saved match list, so you do not need to edit totals by hand.
-        </div>
-      </article>
-    </section>
-  </main>
-
-  <script>
-    const participants = [
-      { name: 'Michelle', groups: ['Group A', 'Group G'], teams: ['Mexico', 'South Africa', 'Korea Republic', 'Czechia', 'Belgium', 'Egypt', 'Iran', 'New Zealand'] },
-      { name: 'Caleb', groups: ['Group B', 'Group H'], teams: ['Canada', 'Switzerland', 'Qatar', 'Bosnia & Herzegovina', 'Spain', 'Uruguay', 'Saudi Arabia', 'Cabo Verde'] },
-      { name: 'Anton', groups: ['Group C', 'Group I'], teams: ['Brazil', 'Morocco', 'Scotland', 'Haiti', 'France', 'Senegal', 'Norway', 'Iraq'] },
-      { name: 'Jade', groups: ['Group D', 'Group J'], teams: ['United States', 'Paraguay', 'Australia', 'Türkiye', 'Argentina', 'Algeria', 'Austria', 'Jordan'] },
-      { name: 'Henry', groups: ['Group E', 'Group K'], teams: ['Germany', "Côte d'Ivoire", 'Ecuador', 'Curaçao', 'Portugal', 'Colombia', 'Uzbekistan', 'DR Congo'] },
-      { name: 'Cloe', groups: ['Group F', 'Group L'], teams: ['Netherlands', 'Japan', 'Sweden', 'Tunisia', 'England', 'Croatia', 'Ghana', 'Panama'] }
-    ];
-
-    const scoring = {
-      groupWin: 3,
-      groupDraw: 1,
-      groupFirst: 5,
-      groupSecond: 3,
-      r32: 2,
-      r16: 3,
-      quarter: 5,
-      semi: 7,
-      final: 10,
-      winner: 15
-    };
-
-    let matchLog = [];
-
-    const assignmentTableBody = document.getElementById('assignmentTableBody');
-    const leaderboardBody = document.getElementById('leaderboardBody');
-    const matchForm = document.getElementById('matchForm');
-    const matchTeam = document.getElementById('matchTeam');
-    const matchesList = document.getElementById('matchesList');
-    const clearMatches = document.getElementById('clearMatches');
-    const seedSample = document.getElementById('seedSample');
-    const downloadData = document.getElementById('downloadData');
-    const themeToggle = document.querySelector('[data-theme-toggle]');
-
-    function themeInit() {
-      let current = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', current);
-      themeToggle.textContent = current === 'dark' ? '☀️ Light mode' : '🌙 Dark mode';
-      themeToggle.addEventListener('click', () => {
-        current = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', current);
-        themeToggle.textContent = current === 'dark' ? '☀️ Light mode' : '🌙 Dark mode';
-      });
-    }
-
-    function flattenTeams() {
-      return participants.flatMap(person => person.teams.map(team => ({ owner: person.name, team, groups: person.groups })));
-    }
-
-    function populateTeamSelect() {
-      const allTeams = flattenTeams();
-      matchTeam.innerHTML = allTeams.map(entry => `<option value="${entry.team}">${entry.team} · ${entry.owner}</option>`).join('');
-    }
-
-    function findOwnerForTeam(teamName) {
-      return participants.find(person => person.teams.includes(teamName));
-    }
-
-    function pointsFromMatch(entry) {
-      if (entry.stage === 'group') {
-        if (entry.goalsFor > entry.goalsAgainst) return scoring.groupWin;
-        if (entry.goalsFor === entry.goalsAgainst) return scoring.groupDraw;
-        return 0;
-      }
-      if (entry.stage === 'group-first') return scoring.groupFirst;
-      if (entry.stage === 'group-second') return scoring.groupSecond;
-      if (entry.stage === 'r32') return scoring.r32;
-      if (entry.stage === 'r16') return scoring.r16;
-      if (entry.stage === 'quarter') return scoring.quarter;
-      if (entry.stage === 'semi') return scoring.semi;
-      if (entry.stage === 'final') return scoring.final;
-      if (entry.stage === 'winner') return scoring.winner;
-      return 0;
-    }
-
-    function computeStandings() {
-      return participants.map(person => {
-        const ownedMatches = matchLog.filter(item => person.teams.includes(item.team));
-        const totals = ownedMatches.reduce((acc, item) => {
-          acc.points += pointsFromMatch(item);
-          acc.goalDifference += (Number(item.goalsFor) - Number(item.goalsAgainst));
-          acc.goalsScored += Number(item.goalsFor);
-          return acc;
-        }, { points: 0, goalDifference: 0, goalsScored: 0 });
-
-        return {
-          ...person,
-          trackedTeams: person.teams.length,
-          ...totals
-        };
-      }).sort((a, b) => b.points - a.points || b.goalDifference - a.goalDifference || b.goalsScored - a.goalsScored || a.name.localeCompare(b.name));
-    }
-
-    function renderAssignments() {
-      const standingsMap = new Map(computeStandings().map(entry => [entry.name, entry]));
-      assignmentTableBody.innerHTML = participants.map(person => {
-        const standing = standingsMap.get(person.name);
-        return `
-          <tr>
-            <td><strong>${person.name}</strong></td>
-            <td>${person.groups.map(group => `<span class="group-pill">${group}</span>`).join(' ')}</td>
-            <td>${person.teams.map(team => `<span class="owner-pill">${team}</span>`).join(' ')}</td>
-            <td><strong>${standing.points}</strong> pts</td>
-          </tr>
-        `;
-      }).join('');
-    }
-
-    function renderLeaderboard() {
-      const standings = computeStandings();
-      leaderboardBody.innerHTML = standings.map((person, index) => `
-        <tr>
-          <td><span class="rank">${index + 1}</span></td>
-          <td><strong>${person.name}</strong></td>
-          <td>${person.groups.join(' + ')}</td>
-          <td>${person.trackedTeams}</td>
-          <td><strong>${person.points}</strong></td>
-          <td>${person.goalDifference > 0 ? '+' : ''}${person.goalDifference}</td>
-          <td>${person.goalsScored}</td>
-        </tr>
-      `).join('');
-    }
-
-    function stageLabel(stage) {
-      return {
-        'group': 'Group stage result',
-        'group-first': 'Finished 1st in group',
-        'group-second': 'Finished 2nd in group',
-        'r32': 'Qualified for round of 32',
-        'r16': 'Qualified for round of 16',
-        'quarter': 'Qualified for quarter-finals',
-        'semi': 'Qualified for semi-finals',
-        'final': 'Qualified for final',
-        'winner': 'Won the World Cup'
-      }[stage] || stage;
-    }
-
-    function renderMatches() {
-      if (!matchLog.length) {
-        matchesList.innerHTML = `<div class="footer-note">No results added yet. Start by loading sample matches or entering the first result manually.</div>`;
-        return;
-      }
-
-      const newestFirst = [...matchLog].reverse();
-      matchesList.innerHTML = newestFirst.map((entry, reverseIndex) => {
-        const points = pointsFromMatch(entry);
-        const owner = findOwnerForTeam(entry.team)?.name || 'Unknown';
-        const originalIndex = matchLog.length - 1 - reverseIndex;
-        const scoreText = entry.stage === 'group' ? `${entry.team} ${entry.goalsFor}-${entry.goalsAgainst} ${entry.opponent}` : entry.team;
-        return `
-          <article class="match-card">
-            <div class="match-top">
-              <strong>${owner}</strong>
-              <span class="owner-pill">+${points} pts</span>
-            </div>
-            <div class="scoreline">${scoreText}</div>
-            <div class="match-meta">
-              <span class="muted">${stageLabel(entry.stage)}</span>
-              <button class="btn" type="button" onclick="removeMatch(${originalIndex})">Delete</button>
-            </div>
-            ${entry.notes ? `<div class="muted">${entry.notes}</div>` : ''}
-          </article>
-        `;
-      }).join('');
-    }
-
-    function renderAll() {
-      renderAssignments();
-      renderLeaderboard();
-      renderMatches();
-    }
-
-    function addMatch(event) {
-      event.preventDefault();
-      const entry = {
-        team: document.getElementById('matchTeam').value,
-        opponent: document.getElementById('opponent').value.trim(),
-        goalsFor: Number(document.getElementById('goalsFor').value || 0),
-        goalsAgainst: Number(document.getElementById('goalsAgainst').value || 0),
-        stage: document.getElementById('stage').value,
-        notes: document.getElementById('notes').value.trim()
-      };
-
-      if (entry.stage !== 'group') {
-        entry.goalsFor = 0;
-        entry.goalsAgainst = 0;
-        entry.opponent = entry.opponent || 'Tournament update';
-      }
-
-      matchLog.push(entry);
-      matchForm.reset();
-      matchTeam.selectedIndex = 0;
-      document.getElementById('stage').value = 'group';
-      renderAll();
-    }
-
-    function removeMatch(index) {
-      matchLog.splice(index, 1);
-      renderAll();
-    }
-    window.removeMatch = removeMatch;
-
-    function downloadMatchData() {
-      const payload = {
-        exportedAt: new Date().toISOString(),
-        matchLog
-      };
-      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'de-souza-bloomfield-match-data.json';
-      a.click();
-      URL.revokeObjectURL(a.href);
-    }
-
-    seedSample.addEventListener('click', () => {
-      matchLog = [
-        { team: 'Mexico', opponent: 'South Africa', goalsFor: 2, goalsAgainst: 0, stage: 'group', notes: 'Opening match example' },
-        { team: 'Iran', opponent: 'New Zealand', goalsFor: 1, goalsAgainst: 1, stage: 'group', notes: 'Draw example' },
-        { team: 'Canada', opponent: 'Switzerland', goalsFor: 3, goalsAgainst: 1, stage: 'group', notes: 'Caleb example' },
-        { team: 'Morocco', opponent: 'Tournament update', goalsFor: 0, goalsAgainst: 0, stage: 'r32', notes: 'Qualified for the round of 32' },
-        { team: 'Ecuador', opponent: 'Tournament update', goalsFor: 0, goalsAgainst: 0, stage: 'quarter', notes: 'Qualified for the quarter-finals' }
-      ];
-      renderAll();
-    });
-
-    clearMatches.addEventListener('click', () => {
-      matchLog = [];
-      renderAll();
-    });
-
-    downloadData.addEventListener('click', downloadMatchData);
-    matchForm.addEventListener('submit', addMatch);
-
-    themeInit();
-    populateTeamSelect();
-    renderAll();
-  </script>
+        <div class="controls"><button class="btn btn-primary" type="submit">Add result</button><button class="btn btn-ghost" id="clearBtn" type="button">Clear all</button><button class="btn btn-ghost" id="seedBtn" type="button">Load sample</button></div>
+      </form>
+      <div class="matchs" id="matchesList" aria-live="polite"></div>
+    </article>
+  </section>
+  <section class="grid2">
+    <article class="panel">
+      <div class="section-title"><h3>Assignments</h3><span class="subtle">Actual countries by family member</span></div>
+      <div class="table-wrap"><table><thead><tr><th>Family member</th><th>Groups</th><th>Teams</th><th>Score</th></tr></thead><tbody id="assignmentsBody"></tbody></table></div>
+    </article>
+    <article class="panel">
+      <div class="section-title"><h3>Current screen</h3><span class="subtle">This changes when you click a name above</span></div>
+      <div class="note" id="focusPanel"></div>
+    </article>
+  </section>
+</main>
+<script>
+const participants=[
+{name:'Michelle',groups:['Group A','Group G'],teams:['Mexico','South Africa','Korea Republic','Czechia','Belgium','Egypt','Iran','New Zealand']},
+{name:'Caleb',groups:['Group B','Group H'],teams:['Canada','Switzerland','Qatar','Bosnia & Herzegovina','Spain','Uruguay','Saudi Arabia','Cabo Verde']},
+{name:'Anton',groups:['Group C','Group I'],teams:['Brazil','Morocco','Scotland','Haiti','France','Senegal','Norway','Iraq']},
+{name:'Jade',groups:['Group D','Group J'],teams:['United States','Paraguay','Australia','Türkiye','Argentina','Algeria','Austria','Jordan']},
+{name:'Henry',groups:['Group E','Group K'],teams:['Germany',"Côte d'Ivoire",'Ecuador','Curaçao','Portugal','Colombia','Uzbekistan','DR Congo']},
+{name:'Cloe',groups:['Group F','Group L'],teams:['Netherlands','Japan','Sweden','Tunisia','England','Croatia','Ghana','Panama']}
+];
+const scoring={groupWin:3,groupDraw:1,groupFirst:5,groupSecond:3,r32:2,r16:3,quarter:5,semi:7,final:10,winner:15};
+let matchLog=[];
+let currentFocus='all';
+const leaderboardBody=document.getElementById('leaderboardBody');
+const assignmentsBody=document.getElementById('assignmentsBody');
+const matchesList=document.getElementById('matchesList');
+const focusPanel=document.getElementById('focusPanel');
+const matchForm=document.getElementById('matchForm');
+const matchTeam=document.getElementById('matchTeam');
+const themeBtn=document.getElementById('themeBtn');
+const clearBtn=document.getElementById('clearBtn');
+const seedBtn=document.getElementById('seedBtn');
+const downloadBtn=document.getElementById('downloadBtn');
+function pointsFromMatch(e){if(e.stage==='group'){if(e.goalsFor>e.goalsAgainst)return scoring.groupWin;if(e.goalsFor===e.goalsAgainst)return scoring.groupDraw;return 0}return scoring[e.stage]||0}
+function teamOwner(team){return participants.find(p=>p.teams.includes(team))}
+function computeStandings(){return participants.map(p=>{const owned=matchLog.filter(m=>p.teams.includes(m.team));const totals=owned.reduce((a,m)=>{a.points+=pointsFromMatch(m);a.gd+=m.goalsFor-m.goalsAgainst;a.gf+=m.goalsFor;return a},{points:0,gd:0,gf:0});return {...p,trackedTeams:p.teams.length,...totals}}).sort((a,b)=>b.points-a.points||b.gd-a.gd||b.gf-a.gf||a.name.localeCompare(b.name))}
+function stageLabel(s){return{'group':'Group stage result','group-first':'Finished 1st in group','group-second':'Finished 2nd in group','r32':'Qualified for round of 32','r16':'Qualified for round of 16','quarter':'Qualified for quarter-finals','semi':'Qualified for semi-finals','final':'Qualified for final','winner':'Won the World Cup'}[s]||s}
+function populateSelect(){matchTeam.innerHTML=participants.flatMap(p=>p.teams.map(t=>`<option value="${t}">${t} · ${p.name}</option>`)).join('')}
+function renderAssignments(){const standings=new Map(computeStandings().map(x=>[x.name,x]));assignmentsBody.innerHTML=participants.map(p=>`<tr><td><strong>${p.name}</strong></td><td>${p.groups.map(g=>`<span class="pill">${g}</span>`).join(' ')}</td><td>${p.teams.map(t=>`<span class="pill">${t}</span>`).join(' ')}</td><td><strong>${standings.get(p.name).points}</strong> pts</td></tr>`).join('')}
+function renderLeaderboard(){const rows=computeStandings().filter(p=>currentFocus==='all'||p.name===currentFocus);leaderboardBody.innerHTML=rows.map((p,i)=>`<tr><td><span class="rank">${i+1}</span></td><td><strong>${p.name}</strong></td><td>${p.groups.join(' + ')}</td><td>${p.trackedTeams}</td><td><strong>${p.points}</strong></td><td>${p.gd>0?'+':''}${p.gd}</td><td>${p.gf}</td></tr>`).join('');focusPanel.innerHTML=currentFocus==='all'?`Showing the full family leaderboard.`:`Showing ${currentFocus}'s focused screen. Their groups are ${participants.find(p=>p.name===currentFocus).groups.join(' and ')}.`}
+function renderMatches(){const rows=matchLog.filter(m=>currentFocus==='all'||teamOwner(m.team)?.name===currentFocus);if(!rows.length){matchesList.innerHTML='<div class="note">No results added yet.</div>';return}matchesList.innerHTML=[...rows].reverse().map((m,idx)=>{const owner=teamOwner(m.team)?.name||'Unknown';const score=m.stage==='group'?`${m.team} ${m.goalsFor}-${m.goalsAgainst} ${m.opponent}`:m.team;const originalIndex=matchLog.indexOf(m);return `<article class="match"><div class="match-top"><strong>${owner}</strong><span class="pill">+${pointsFromMatch(m)} pts</span></div><div class="scoreline">${score}</div><div class="match-meta"><span class="subtle">${stageLabel(m.stage)}</span><button class="btn" type="button" onclick="removeMatch(${originalIndex})">Delete</button></div>${m.notes?`<div class="subtle">${m.notes}</div>`:''}</article>`}).join('')}
+function renderAll(){renderAssignments();renderLeaderboard();renderMatches()}
+function removeMatch(i){matchLog.splice(i,1);renderAll()}window.removeMatch=removeMatch;
+function addMatch(e){e.preventDefault();const entry={team:matchTeam.value,opponent:document.getElementById('opponent').value.trim(),goalsFor:+document.getElementById('goalsFor').value,goalsAgainst:+document.getElementById('goalsAgainst').value,stage:document.getElementById('stage').value,notes:document.getElementById('notes').value.trim()};if(entry.stage!=='group'){entry.goalsFor=0;entry.goalsAgainst=0;entry.opponent=entry.opponent||'Tournament update'}matchLog.push(entry);matchForm.reset();document.getElementById('stage').value='group';renderAll()}
+function downloadData(){const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),matchLog},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='de-souza-bloomfield-match-data.json';a.click();URL.revokeObjectURL(a.href)}
+function setFocus(name){currentFocus=name;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.focus===name));renderAll()}
+document.getElementById('focusTabs').addEventListener('click',e=>{const b=e.target.closest('[data-focus]');if(b)setFocus(b.dataset.focus)});
+matchForm.addEventListener('submit',addMatch);clearBtn.addEventListener('click',()=>{matchLog=[];renderAll()});seedBtn.addEventListener('click',()=>{matchLog=[{team:'Mexico',opponent:'South Africa',goalsFor:2,goalsAgainst:0,stage:'group',notes:'Sample'},{team:'Iran',opponent:'New Zealand',goalsFor:1,goalsAgainst:1,stage:'group',notes:'Sample'},{team:'Canada',opponent:'Switzerland',goalsFor:3,goalsAgainst:1,stage:'group',notes:'Sample'},{team:'Morocco',opponent:'Tournament update',goalsFor:0,goalsAgainst:0,stage:'r32',notes:'Sample'},{team:'Ecuador',opponent:'Tournament update',goalsFor:0,goalsAgainst:0,stage:'quarter',notes:'Sample'}];renderAll()});downloadBtn.addEventListener('click',downloadData);themeBtn.addEventListener('click',()=>{const cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',cur);themeBtn.textContent=cur==='dark'?'🌗 Theme':'☀️ Theme'});
+populateSelect();renderAll();
+</script>
 </body>
 </html>
