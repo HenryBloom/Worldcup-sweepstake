@@ -1,112 +1,85 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>De Souza x Bloomfield World Cup Sweepstake</title>
-<meta name="description" content="Family FIFA World Cup 2026 sweepstake tracker." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>De Souza x Bloomfield Sweepstake</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow Condensed:wght@700&family=Outfit:wght@400;600&family=Roboto Condensed:wght@700&display=swap" rel="stylesheet">
 <style>
-:root,[data-theme="light"]{--bg:#f7f3eb;--surface:#fff;--surface2:#f0e8da;--text:#171412;--muted:#655c50;--border:rgba(23,20,18,.12);--gold:#c59b32;--red:#cf2e2e;--blue:#2d54b8;--good:#2d8a56;--bad:#b33737;--radius:24px;--shadow:0 18px 40px rgba(0,0,0,.08);--font-display:'Barlow',Arial,sans-serif;--font-body:'Outfit',Arial,sans-serif}
-[data-theme="dark"]{--bg:#0f1218;--surface:#151a22;--surface2:#1a2130;--text:#f5f0e7;--muted:#c5bcaf;--border:rgba(245,240,231,.12);--gold:#d7ae43;--red:#e14444;--blue:#5b82ea;--good:#54d08d;--bad:#ef7777;--shadow:0 18px 48px rgba(0,0,0,.34)}
-*{box-sizing:border-box}body{margin:0;font-family:var(--font-body);background:radial-gradient(circle at top left,rgba(225,68,68,.12),transparent 28%),radial-gradient(circle at top right,rgba(91,130,234,.12),transparent 30%),radial-gradient(circle at bottom center,rgba(215,174,67,.12),transparent 34%),var(--bg);color:var(--text)}
-a{color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}.container{width:min(calc(100% - 2rem),1200px);margin:0 auto}header{position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--border)}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 0;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:.9rem}.mark{width:54px;height:54px;border-radius:18px;padding:.45rem;background:linear-gradient(135deg,rgba(225,68,68,.18),rgba(91,130,234,.18) 50%,rgba(215,174,67,.22));border:1px solid var(--border);box-shadow:var(--shadow)}.brand h1{margin:0;font-family:var(--font-display);font-size:1.15rem;line-height:1;text-transform:uppercase}.brand p{margin:.25rem 0 0;color:var(--muted);font-size:.92rem}.btn{border:1px solid var(--border);border-radius:999px;min-height:44px;padding:.72rem 1rem;background:var(--surface);color:var(--text)}.btn-primary{background:linear-gradient(90deg,var(--red),var(--blue) 60%,var(--gold));color:#fff;border-color:transparent}.btn-ghost{background:color-mix(in srgb,var(--surface) 88%,transparent)}main{padding:1.25rem 0 3rem}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem;margin-bottom:1rem}.panel{background:linear-gradient(180deg,color-mix(in srgb,var(--surface) 92%,transparent),color-mix(in srgb,var(--surface2) 100%,transparent));border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow)}.hero h2,.section-title{font-family:var(--font-display);text-transform:uppercase;margin:0}.hero h2{font-size:clamp(2rem,4vw,3.6rem);line-height:.95;max-width:12ch}.eyebrow{display:inline-flex;padding:.45rem .75rem;border-radius:999px;background:rgba(197,155,50,.12);color:var(--gold);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;margin-bottom:1rem}.hero p{color:var(--muted);max-width:68ch}.hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1rem}.stat{background:color-mix(in srgb,var(--surface2) 75%,transparent);border:1px solid var(--border);border-radius:18px;padding:1rem}.stat strong{display:block;font-family:var(--font-display);font-size:1.6rem}.logo-wrap{display:grid;place-items:center;min-height:100%;text-align:center}.logo-shell{width:min(100%,320px);aspect-ratio:1;padding:1.1rem;border-radius:30px;border:1px solid var(--border);box-shadow:var(--shadow);background:var(--surface)}.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:1rem;margin-top:1rem}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}.tab{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:.7rem .95rem}.tab.active{background:linear-gradient(90deg,var(--red),var(--blue));color:#fff;border-color:transparent}.hidden{display:none !important}.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:18px;background:var(--surface)}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:.9rem 1rem;border-bottom:1px solid rgba(0,0,0,.08);text-align:left;vertical-align:top}th{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:color-mix(in srgb,var(--surface2) 85%,transparent)}.pill{display:inline-flex;align-items:center;gap:.35rem;padding:.32rem .62rem;border-radius:999px;background:color-mix(in srgb,var(--surface2) 88%,transparent);border:1px solid var(--border);font-size:.78rem;white-space:nowrap}.rank{display:inline-grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:rgba(215,174,67,.16);color:var(--gold);font-family:var(--font-display);font-weight:800}.section-title{display:flex;justify-content:space-between;align-items:end;gap:.75rem;flex-wrap:wrap;font-size:clamp(1.3rem,2vw,2rem);margin-bottom:.85rem}.subtle{color:var(--muted)}.controls{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}.form-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}.field{display:grid;gap:.4rem}.field label{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700}.field input,.field select,.field textarea{width:100%;min-height:46px;border-radius:14px;border:1px solid var(--border);background:var(--surface2);color:var(--text);padding:.8rem .9rem}.field textarea{min-height:105px;resize:vertical}.list{display:grid;gap:.65rem;margin:0;padding:0;list-style:none}.list li{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid rgba(0,0,0,.08)}.list li:last-child{border-bottom:0}.matchs{display:grid;gap:.65rem;margin-top:1rem}.match{padding:1rem;border:1px solid var(--border);border-radius:18px;background:color-mix(in srgb,var(--surface2) 82%,transparent)}.match-top,.match-meta{display:flex;justify-content:space-between;gap:.75rem;flex-wrap:wrap}.scoreline{font-family:var(--font-display);font-size:1.1rem;text-transform:uppercase}.note{padding:1rem;border-radius:18px;background:color-mix(in srgb,var(--surface2) 72%,transparent);border:1px dashed color-mix(in srgb,var(--gold) 36%,transparent)}@media (max-width: 1024px){.hero,.grid2,.grid3,.form-grid{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr 1fr}}@media (max-width:680px){.container{width:min(calc(100% - 1rem),1200px)}.hero-grid{grid-template-columns:1fr}.panel{padding:1rem}}
+:root{--bg:#0f1218;--card:#151a22;--muted:#c5bcaf;--gold:#d7ae43;--accent1:#e14444;--accent2:#5b82ea;--radius:18px;--pad:14px}
+*{box-sizing:border-box}html,body{height:100%;margin:0;font-family:Outfit,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#f5f0e7;background:linear-gradient(180deg,rgba(9,10,12,1),rgba(9,10,12,1))}
+.container{max-width:720px;margin:0 auto;padding:12px}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.brand{display:flex;align-items:center;gap:10px}
+.fifalogo{font-family:'Roboto Condensed',Barlow Condensed,system-ui;font-weight:700;font-size:22px;letter-spacing:-0.8px;line-height:0.9;color:#f5f0e7;text-transform:uppercase;display:inline-grid;align-items:center;justify-content:center;padding:4px 8px;border-radius:10px;background:linear-gradient(135deg,rgba(255,255,255,0.04),transparent);border:1px solid rgba(255,255,255,0.06)}
+.fifalogo .stack{display:block;line-height:0.88;text-align:center}
+.fifalogo .top{display:block;font-size:17px;letter-spacing:-0.7px}
+.fifalogo .bot{display:block;font-size:13px;color:#d7ae43;letter-spacing:0.1em}
+h1{font-family:Barlow Condensed,system-ui;font-size:14px;margin:0}
+.small{color:var(--muted);font-size:12px}
+.btn{padding:8px 10px;border-radius:999px;border:0;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;font-weight:700;font-size:13px}
+.btn-ghost{padding:8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted);font-weight:600;font-size:12px}
+.card{background:var(--card);border-radius:14px;padding:14px;margin:10px 0}
+.leadergrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:12px}
+.tile h3{margin:0;font-size:15px}
+.tile p{margin:6px 0 0;color:var(--muted);font-size:13px}
+.center{display:flex;align-items:center;justify-content:center}
+.focus-page{position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.85));display:none;padding:18px;overflow:auto}
+.focus-content{max-width:520px;margin:0 auto}
+.focus-tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.big{font-size:22px;font-weight:700}
+.kv{font-size:13px;color:var(--muted)}
+.footer{height:64px}
+@media (max-width:420px){.leadergrid{grid-template-columns:1fr 1fr}.focus-tiles{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header>
-  <div class="container topbar">
+<div class="container">
+  <div class="header">
     <div class="brand">
-      <div class="mark" aria-hidden="true">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="g" x1="8" y1="8" x2="92" y2="92"><stop stop-color="#CF2E2E"/><stop offset="0.55" stop-color="#2D54B8"/><stop offset="1" stop-color="#D7AE43"/></linearGradient></defs>
-          <path d="M50 8L82 20V47C82 67.5 67.9 83.2 50 90C32.1 83.2 18 67.5 18 47V20L50 8Z" stroke="url(#g)" stroke-width="6"/>
-          <circle cx="50" cy="47" r="11" stroke="url(#g)" stroke-width="5"/>
-        </svg>
+      <div class="fifalogo" aria-label="FIFA 2026">
+        <span class="stack"><span class="top">fifa</span><span class="bot">2026</span></span>
       </div>
-      <div><h1>De Souza x Bloomfield</h1><p>World Cup 2026 sweepstake</p></div>
+      <div><h1>De Souza × Bloomfield</h1><div class="small">World Cup 2026</div></div>
     </div>
-    <div class="controls"><button class="btn" id="themeBtn" type="button">🌗 Theme</button><button class="btn btn-primary" id="downloadBtn" type="button">Download data</button></div>
+    <button id="download" class="btn">Export</button>
   </div>
-</header>
-<main id="main" class="container">
-  <section class="hero">
-    <article class="panel">
-      <div class="eyebrow">Family viewing mode</div>
-      <h2>One screen for the full family leaderboard.</h2>
-      <p>This version is built for group viewing: a big shared leaderboard, one scorekeeper control set, and one-button focus views for each family member. Use the name buttons to flip the display to a single person or back to the full board.</p>
-      <div class="hero-grid">
-        <div class="stat"><strong>6</strong><span class="subtle">Family players</span></div>
-        <div class="stat"><strong>12</strong><span class="subtle">Groups assigned</span></div>
-        <div class="stat"><strong>48</strong><span class="subtle">Teams tracked</span></div>
+
+  <div class="card">
+    <div class="small">Leaderboard</div>
+    <div class="leadergrid" id="leaderTiles"></div>
+  </div>
+
+  <div class="card">
+    <div class="small">Scorekeeper</div>
+    <form id="matchForm">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <select id="matchTeam"></select>
+        <input id="opponent" placeholder="Opponent" required />
+        <input id="goalsFor" type="number" min="0" placeholder="GF" required />
+        <input id="goalsAgainst" type="number" min="0" placeholder="GA" required />
       </div>
-    </article>
-    <aside class="panel logo-wrap">
-      <div class="logo-shell">
-        <svg viewBox="0 0 320 320" role="img" aria-label="Custom sweepstake crest" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="heroGradient" x1="44" y1="44" x2="276" y2="276"><stop stop-color="#CF2E2E"/><stop offset="0.52" stop-color="#2D54B8"/><stop offset="1" stop-color="#D7AE43"/></linearGradient>
-            <linearGradient id="ballGradient" x1="106" y1="196" x2="214" y2="124"><stop stop-color="#F5F0E7"/><stop offset="1" stop-color="#D7AE43"/></linearGradient>
-          </defs>
-          <rect x="18" y="18" width="284" height="284" rx="36" fill="rgba(255,255,255,0.02)" stroke="url(#heroGradient)" stroke-width="6"/>
-          <path d="M160 46L240 76V146C240 197 205 236 160 254C115 236 80 197 80 146V76L160 46Z" fill="rgba(255,255,255,0.03)" stroke="url(#heroGradient)" stroke-width="8"/>
-          <path d="M116 104C136 85 147 57 148 78C149 101 137 135 119 154" stroke="#F5F0E7" stroke-width="10" stroke-linecap="round"/>
-          <path d="M204 104C184 85 173 57 172 78C171 101 183 135 201 154" stroke="#F5F0E7" stroke-width="10" stroke-linecap="round"/>
-          <path d="M121 197H199" stroke="#F5F0E7" stroke-width="11" stroke-linecap="round"/>
-          <circle cx="160" cy="160" r="34" fill="none" stroke="url(#ballGradient)" stroke-width="9"/>
-        </svg>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <select id="stage"><option value="group">Group</option><option value="r32">R32</option><option value="r16">R16</option><option value="quarter">QF</option><option value="semi">SF</option><option value="final">Final</option><option value="winner">Winner</option></select>
+        <button class="btn" type="submit">Add</button>
       </div>
-      <p style="margin:.75rem 0 0;color:var(--muted)">Embedded SVG logo, no external image needed.</p>
-    </aside>
-  </section>
-  <section class="panel">
-    <div class="section-title"><h3>Focus screens</h3><span class="subtle">Tap a name to spotlight their view</span></div>
-    <div class="tabs" id="focusTabs">
-      <button class="tab active" data-focus="all" type="button">All</button>
-      <button class="tab" data-focus="Michelle" type="button">Michelle</button>
-      <button class="tab" data-focus="Caleb" type="button">Caleb</button>
-      <button class="tab" data-focus="Anton" type="button">Anton</button>
-      <button class="tab" data-focus="Jade" type="button">Jade</button>
-      <button class="tab" data-focus="Henry" type="button">Henry</button>
-      <button class="tab" data-focus="Cloe" type="button">Cloe</button>
-    </div>
-  </section>
-  <section class="grid2">
-    <article class="panel">
-      <div class="section-title"><h3>Leaderboard</h3><span class="subtle">Ranked by points, then goal difference, then goals scored</span></div>
-      <div class="table-wrap"><table><thead><tr><th>Rank</th><th>Owner</th><th>Groups</th><th>Teams</th><th>Pts</th><th>GD</th><th>GF</th></tr></thead><tbody id="leaderboardBody"></tbody></table></div>
-    </article>
-    <article class="panel">
-      <div class="section-title"><h3>Scorekeeper</h3><span class="subtle">Only you should edit results</span></div>
-      <form id="matchForm">
-        <div class="form-grid">
-          <div class="field"><label for="matchTeam">Tracked team</label><select id="matchTeam"></select></div>
-          <div class="field"><label for="opponent">Opponent</label><input id="opponent" type="text" placeholder="e.g. Argentina" required /></div>
-          <div class="field"><label for="goalsFor">Goals for</label><input id="goalsFor" type="number" min="0" step="1" required /></div>
-          <div class="field"><label for="goalsAgainst">Goals against</label><input id="goalsAgainst" type="number" min="0" step="1" required /></div>
-          <div class="field"><label for="stage">Stage</label><select id="stage"><option value="group">Group stage match</option><option value="group-first">Finished 1st in group</option><option value="group-second">Finished 2nd in group</option><option value="r32">Qualified for round of 32</option><option value="r16">Qualified for round of 16</option><option value="quarter">Qualified for quarter-finals</option><option value="semi">Qualified for semi-finals</option><option value="final">Qualified for final</option><option value="winner">Won World Cup</option></select></div>
-          <div class="field" style="grid-column:1/-1"><label for="notes">Notes</label><textarea id="notes" placeholder="Optional notes"></textarea></div>
-        </div>
-        <div class="controls"><button class="btn btn-primary" type="submit">Add result</button><button class="btn btn-ghost" id="clearBtn" type="button">Clear all</button><button class="btn btn-ghost" id="seedBtn" type="button">Load sample</button></div>
-      </form>
-      <div class="matchs" id="matchesList" aria-live="polite"></div>
-    </article>
-  </section>
-  <section class="grid2">
-    <article class="panel">
-      <div class="section-title"><h3>Assignments</h3><span class="subtle">Actual countries by family member</span></div>
-      <div class="table-wrap"><table><thead><tr><th>Family member</th><th>Groups</th><th>Teams</th><th>Score</th></tr></thead><tbody id="assignmentsBody"></tbody></table></div>
-    </article>
-    <article class="panel">
-      <div class="section-title"><h3>Current screen</h3><span class="subtle">This changes when you click a name above</span></div>
-      <div class="note" id="focusPanel"></div>
-    </article>
-  </section>
-</main>
+    </form>
+  </div>
+
+  <div style="height:14px"></div>
+  <div class="small center">Click on tile to open detail view</div>
+  <div class="footer"></div>
+</div>
+
+<div id="focus" class="focus-page">
+  <div class="focus-content card" id="focusContent">
+    <div style="display:flex;justify-content:space-between;align-items:center"><h2 id="focusName"></h2><button id="closeFocus" class="btn-ghost">✕</button></div>
+    <div class="small" id="focusGroups"></div>
+    <div class="focus-tiles" id="focusTiles"></div>
+  </div>
+</div>
+
 <script>
 const participants=[
 {name:'Michelle',groups:['Group A','Group G'],teams:['Mexico','South Africa','Korea Republic','Czechia','Belgium','Egypt','Iran','New Zealand']},
@@ -118,33 +91,18 @@ const participants=[
 ];
 const scoring={groupWin:3,groupDraw:1,groupFirst:5,groupSecond:3,r32:2,r16:3,quarter:5,semi:7,final:10,winner:15};
 let matchLog=[];
-let currentFocus='all';
-const leaderboardBody=document.getElementById('leaderboardBody');
-const assignmentsBody=document.getElementById('assignmentsBody');
-const matchesList=document.getElementById('matchesList');
-const focusPanel=document.getElementById('focusPanel');
-const matchForm=document.getElementById('matchForm');
-const matchTeam=document.getElementById('matchTeam');
-const themeBtn=document.getElementById('themeBtn');
-const clearBtn=document.getElementById('clearBtn');
-const seedBtn=document.getElementById('seedBtn');
-const downloadBtn=document.getElementById('downloadBtn');
-function pointsFromMatch(e){if(e.stage==='group'){if(e.goalsFor>e.goalsAgainst)return scoring.groupWin;if(e.goalsFor===e.goalsAgainst)return scoring.groupDraw;return 0}return scoring[e.stage]||0}
-function teamOwner(team){return participants.find(p=>p.teams.includes(team))}
-function computeStandings(){return participants.map(p=>{const owned=matchLog.filter(m=>p.teams.includes(m.team));const totals=owned.reduce((a,m)=>{a.points+=pointsFromMatch(m);a.gd+=m.goalsFor-m.goalsAgainst;a.gf+=m.goalsFor;return a},{points:0,gd:0,gf:0});return {...p,trackedTeams:p.teams.length,...totals}}).sort((a,b)=>b.points-a.points||b.gd-a.gd||b.gf-a.gf||a.name.localeCompare(b.name))}
-function stageLabel(s){return{'group':'Group stage result','group-first':'Finished 1st in group','group-second':'Finished 2nd in group','r32':'Qualified for round of 32','r16':'Qualified for round of 16','quarter':'Qualified for quarter-finals','semi':'Qualified for semi-finals','final':'Qualified for final','winner':'Won the World Cup'}[s]||s}
-function populateSelect(){matchTeam.innerHTML=participants.flatMap(p=>p.teams.map(t=>`<option value="${t}">${t} · ${p.name}</option>`)).join('')}
-function renderAssignments(){const standings=new Map(computeStandings().map(x=>[x.name,x]));assignmentsBody.innerHTML=participants.map(p=>`<tr><td><strong>${p.name}</strong></td><td>${p.groups.map(g=>`<span class="pill">${g}</span>`).join(' ')}</td><td>${p.teams.map(t=>`<span class="pill">${t}</span>`).join(' ')}</td><td><strong>${standings.get(p.name).points}</strong> pts</td></tr>`).join('')}
-function renderLeaderboard(){const rows=computeStandings().filter(p=>currentFocus==='all'||p.name===currentFocus);leaderboardBody.innerHTML=rows.map((p,i)=>`<tr><td><span class="rank">${i+1}</span></td><td><strong>${p.name}</strong></td><td>${p.groups.join(' + ')}</td><td>${p.trackedTeams}</td><td><strong>${p.points}</strong></td><td>${p.gd>0?'+':''}${p.gd}</td><td>${p.gf}</td></tr>`).join('');focusPanel.innerHTML=currentFocus==='all'?`Showing the full family leaderboard.`:`Showing ${currentFocus}'s focused screen. Their groups are ${participants.find(p=>p.name===currentFocus).groups.join(' and ')}.`}
-function renderMatches(){const rows=matchLog.filter(m=>currentFocus==='all'||teamOwner(m.team)?.name===currentFocus);if(!rows.length){matchesList.innerHTML='<div class="note">No results added yet.</div>';return}matchesList.innerHTML=[...rows].reverse().map((m,idx)=>{const owner=teamOwner(m.team)?.name||'Unknown';const score=m.stage==='group'?`${m.team} ${m.goalsFor}-${m.goalsAgainst} ${m.opponent}`:m.team;const originalIndex=matchLog.indexOf(m);return `<article class="match"><div class="match-top"><strong>${owner}</strong><span class="pill">+${pointsFromMatch(m)} pts</span></div><div class="scoreline">${score}</div><div class="match-meta"><span class="subtle">${stageLabel(m.stage)}</span><button class="btn" type="button" onclick="removeMatch(${originalIndex})">Delete</button></div>${m.notes?`<div class="subtle">${m.notes}</div>`:''}</article>`}).join('')}
-function renderAll(){renderAssignments();renderLeaderboard();renderMatches()}
-function removeMatch(i){matchLog.splice(i,1);renderAll()}window.removeMatch=removeMatch;
-function addMatch(e){e.preventDefault();const entry={team:matchTeam.value,opponent:document.getElementById('opponent').value.trim(),goalsFor:+document.getElementById('goalsFor').value,goalsAgainst:+document.getElementById('goalsAgainst').value,stage:document.getElementById('stage').value,notes:document.getElementById('notes').value.trim()};if(entry.stage!=='group'){entry.goalsFor=0;entry.goalsAgainst=0;entry.opponent=entry.opponent||'Tournament update'}matchLog.push(entry);matchForm.reset();document.getElementById('stage').value='group';renderAll()}
-function downloadData(){const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),matchLog},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='de-souza-bloomfield-match-data.json';a.click();URL.revokeObjectURL(a.href)}
-function setFocus(name){currentFocus=name;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.focus===name));renderAll()}
-document.getElementById('focusTabs').addEventListener('click',e=>{const b=e.target.closest('[data-focus]');if(b)setFocus(b.dataset.focus)});
-matchForm.addEventListener('submit',addMatch);clearBtn.addEventListener('click',()=>{matchLog=[];renderAll()});seedBtn.addEventListener('click',()=>{matchLog=[{team:'Mexico',opponent:'South Africa',goalsFor:2,goalsAgainst:0,stage:'group',notes:'Sample'},{team:'Iran',opponent:'New Zealand',goalsFor:1,goalsAgainst:1,stage:'group',notes:'Sample'},{team:'Canada',opponent:'Switzerland',goalsFor:3,goalsAgainst:1,stage:'group',notes:'Sample'},{team:'Morocco',opponent:'Tournament update',goalsFor:0,goalsAgainst:0,stage:'r32',notes:'Sample'},{team:'Ecuador',opponent:'Tournament update',goalsFor:0,goalsAgainst:0,stage:'quarter',notes:'Sample'}];renderAll()});downloadBtn.addEventListener('click',downloadData);themeBtn.addEventListener('click',()=>{const cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',cur);themeBtn.textContent=cur==='dark'?'🌗 Theme':'☀️ Theme'});
-populateSelect();renderAll();
+function points(m){if(m.stage==='group'){if(m.goalsFor>m.goalsAgainst)return scoring.groupWin;if(m.goalsFor===m.goalsAgainst)return scoring.groupDraw;return 0}return scoring[m.stage]||0}
+function compute(){return participants.map(p=>{const owned=matchLog.filter(m=>p.teams.includes(m.team));const pts=owned.reduce((a,m)=>a+points(m),0);const gd=owned.reduce((a,m)=>a+(m.goalsFor-m.goalsAgainst),0);const gf=owned.reduce((a,m)=>a+m.goalsFor,0);return {...p,pts,gd,gf}}).sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.gf-a.gf||a.name.localeCompare(b.name))}
+function renderLeaderboard(){const el=document.getElementById('leaderTiles');el.innerHTML='';compute().forEach((p)=>{const div=document.createElement('div');div.className='tile';div.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center"><div><h3>${p.name}</h3><div class="kv">${p.groups.join(' + ')}</div></div><div style="text-align:right"><div class="big">${p.pts}</div><div class="kv">pts</div></div></div><div style="margin-top:8px" class="kv">GD ${p.gd} · GF ${p.gf}</div>`;div.onclick=()=>openFocus(p.name);el.appendChild(div)})}
+function openFocus(name){const panel=document.getElementById('focus');const p=participants.find(x=>x.name===name);if(!p){panel.style.display='none';return}document.getElementById('focusName').textContent=p.name;document.getElementById('focusGroups').textContent=p.groups.join(' and ');const tiles=document.getElementById('focusTiles');tiles.innerHTML='';const stats=compute().find(x=>x.name===p.name);tiles.innerHTML=`<div class="tile"><h3>Points</h3><p class="big">${stats.pts}</p></div><div class="tile"><h3>Goal diff</h3><p class="big">${stats.gd>0?'+':''}${stats.gd}</p></div><div class="tile"><h3>Goals</h3><p class="big">${stats.gf}</p></div><div class="tile"><h3>Teams</h3><p class="kv">${p.teams.join(', ')}</p></div>`;panel.style.display='block';panel.scrollTop=0}
+function closeFocus(){document.getElementById('focus').style.display='none'}
+function populateSelect(){const sel=document.getElementById('matchTeam');sel.innerHTML=participants.flatMap(p=>p.teams.map(t=>`<option value="${t}">${t} · ${p.name}</option>`)).join('')}
+function download(){const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),matchLog},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='matches.json';a.click();URL.revokeObjectURL(a.href)}
+document.getElementById('leaderTiles').addEventListener('click',e=>{const t=e.target.closest('.tile');if(t){const name=t.querySelector('h3').textContent;openFocus(name)}});
+document.getElementById('closeFocus').addEventListener('click',closeFocus);
+document.getElementById('matchForm').addEventListener('submit',e=>{e.preventDefault();const entry={team:document.getElementById('matchTeam').value,opponent:document.getElementById('opponent').value,goalsFor:+document.getElementById('goalsFor').value,goalsAgainst:+document.getElementById('goalsAgainst').value,stage:document.getElementById('stage').value};matchLog.push(entry);renderLeaderboard();document.getElementById('matchForm').reset()});
+document.getElementById('download').addEventListener('click',download);
+renderLeaderboard();populateSelect();
 </script>
 </body>
 </html>
