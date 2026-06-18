@@ -6,8 +6,8 @@
 <title>De Souza x Bloomfield Sweepstake</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow Condensed:wght@700&family=Outfit:wght@400;600&family=Roboto Condensed:wght@700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0f1218;--card:#151a22;--muted:#c5bcaf;--gold:#d7ae43;--accent1:#e14444;--accent2:#5b82ea;--radius:18px;--pad:14px}
-*{box-sizing:border-box}html,body{height:100%;margin:0;font-family:Outfit,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#f5f0e7;background:linear-gradient(180deg,rgba(9,10,12,1),rgba(9,10,12,1))}
+:root{--bg:#0f1218;--card:#151a22;--muted:#c5bcaf;--gold:#d7ae43;--accent1:#e14444;--accent2:#5b82ea;--radius:18px}
+*{box-sizing:border-box}html,body{height:100%;margin:0;font-family:Outfit,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#f5f0e7;background:linear-gradient(180deg,#0f1218,#0f1218)}
 .container{max-width:720px;margin:0 auto;padding:12px}
 .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .brand{display:flex;align-items:center;gap:10px}
@@ -25,6 +25,10 @@ h1{font-family:Barlow Condensed,system-ui;font-size:14px;margin:0}
 .tile h3{margin:0;font-size:15px}
 .tile p{margin:6px 0 0;color:var(--muted);font-size:13px}
 .center{display:flex;align-items:center;justify-content:center}
+.matches-section{margin-top:10px}
+.matches-title{font-size:14px;font-weight:700;margin-bottom:8px}
+.match-row{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:10px;background:rgba(255,255,255,0.02);margin-bottom:6px;font-size:14px}
+.flag{font-size:16px;margin-right:6px}
 .focus-page{position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.85));display:none;padding:18px;overflow:auto}
 .focus-content{max-width:520px;margin:0 auto}
 .focus-tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
@@ -43,7 +47,6 @@ h1{font-family:Barlow Condensed,system-ui;font-size:14px;margin:0}
       </div>
       <div><h1>De Souza × Bloomfield</h1><div class="small">World Cup 2026</div></div>
     </div>
-    <button id="download" class="btn">Export</button>
   </div>
 
   <div class="card">
@@ -51,20 +54,9 @@ h1{font-family:Barlow Condensed,system-ui;font-size:14px;margin:0}
     <div class="leadergrid" id="leaderTiles"></div>
   </div>
 
-  <div class="card">
-    <div class="small">Scorekeeper</div>
-    <form id="matchForm">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <select id="matchTeam"></select>
-        <input id="opponent" placeholder="Opponent" required />
-        <input id="goalsFor" type="number" min="0" placeholder="GF" required />
-        <input id="goalsAgainst" type="number" min="0" placeholder="GA" required />
-      </div>
-      <div style="display:flex;gap:8px;margin-top:10px">
-        <select id="stage"><option value="group">Group</option><option value="r32">R32</option><option value="r16">R16</option><option value="quarter">QF</option><option value="semi">SF</option><option value="final">Final</option><option value="winner">Winner</option></select>
-        <button class="btn" type="submit">Add</button>
-      </div>
-    </form>
+  <div class="card matches-section">
+    <div class="matches-title">Latest Matches</div>
+    <div id="matchesList"></div>
   </div>
 
   <div style="height:14px"></div>
@@ -83,26 +75,65 @@ h1{font-family:Barlow Condensed,system-ui;font-size:14px;margin:0}
 <script>
 const participants=[
 {name:'Michelle',groups:['Group A','Group G'],teams:['Mexico','South Africa','Korea Republic','Czechia','Belgium','Egypt','Iran','New Zealand']},
-{name:'Caleb',groups:['Group B','Group H'],teams:['Canada','Switzerland','Qatar','Bosnia & Herzegovina','Spain','Uruguay','Saudi Arabia','Cabo Verde']},
+{name:'Caleb',groups:['Group B','Group H'],teams:['Canada','Switzerland','Qatar','Bosnia and Herzegovina','Spain','Uruguay','Saudi Arabia','Cabo Verde']},
 {name:'Anton',groups:['Group C','Group I'],teams:['Brazil','Morocco','Scotland','Haiti','France','Senegal','Norway','Iraq']},
-{name:'Jade',groups:['Group D','Group J'],teams:['United States','Paraguay','Australia','Türkiye','Argentina','Algeria','Austria','Jordan']},
+{name:'Jade',groups:['Group D','Group J'],teams:['USA','Paraguay','Australia','Türkiye','Argentina','Algeria','Austria','Jordan']},
 {name:'Henry',groups:['Group E','Group K'],teams:['Germany',"Côte d'Ivoire",'Ecuador','Curaçao','Portugal','Colombia','Uzbekistan','DR Congo']},
 {name:'Cloe',groups:['Group F','Group L'],teams:['Netherlands','Japan','Sweden','Tunisia','England','Croatia','Ghana','Panama']}
 ];
-const scoring={groupWin:3,groupDraw:1,groupFirst:5,groupSecond:3,r32:2,r16:3,quarter:5,semi:7,final:10,winner:15};
-let matchLog=[];
-function points(m){if(m.stage==='group'){if(m.goalsFor>m.goalsAgainst)return scoring.groupWin;if(m.goalsFor===m.goalsAgainst)return scoring.groupDraw;return 0}return scoring[m.stage]||0}
-function compute(){return participants.map(p=>{const owned=matchLog.filter(m=>p.teams.includes(m.team));const pts=owned.reduce((a,m)=>a+points(m),0);const gd=owned.reduce((a,m)=>a+(m.goalsFor-m.goalsAgainst),0);const gf=owned.reduce((a,m)=>a+m.goalsFor,0);return {...p,pts,gd,gf}}).sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.gf-a.gf||a.name.localeCompare(b.name))}
-function renderLeaderboard(){const el=document.getElementById('leaderTiles');el.innerHTML='';compute().forEach((p)=>{const div=document.createElement('div');div.className='tile';div.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center"><div><h3>${p.name}</h3><div class="kv">${p.groups.join(' + ')}</div></div><div style="text-align:right"><div class="big">${p.pts}</div><div class="kv">pts</div></div></div><div style="margin-top:8px" class="kv">GD ${p.gd} · GF ${p.gf}</div>`;div.onclick=()=>openFocus(p.name);el.appendChild(div)})}
-function openFocus(name){const panel=document.getElementById('focus');const p=participants.find(x=>x.name===name);if(!p){panel.style.display='none';return}document.getElementById('focusName').textContent=p.name;document.getElementById('focusGroups').textContent=p.groups.join(' and ');const tiles=document.getElementById('focusTiles');tiles.innerHTML='';const stats=compute().find(x=>x.name===p.name);tiles.innerHTML=`<div class="tile"><h3>Points</h3><p class="big">${stats.pts}</p></div><div class="tile"><h3>Goal diff</h3><p class="big">${stats.gd>0?'+':''}${stats.gd}</p></div><div class="tile"><h3>Goals</h3><p class="big">${stats.gf}</p></div><div class="tile"><h3>Teams</h3><p class="kv">${p.teams.join(', ')}</p></div>`;panel.style.display='block';panel.scrollTop=0}
+
+const matchResults=[
+{team1:'Ghana',score1:1,team2:'Panama',score2:0},
+{team1:'England',score1:4,team2:'Croatia',score2:2},
+{team1:'Colombia',score1:2,team2:'Uzbekistan',score2:0},
+{team1:'Portugal',score1:1,team2:'DR Congo',score2:1},
+{team1:'Austria',score1:3,team2:'Jordan',score2:1},
+{team1:'Argentina',score1:3,team2:'Algeria',score2:0},
+{team1:'Norway',score1:4,team2:'Iraq',score2:1},
+{team1:'France',score1:3,team2:'Senegal',score2:1},
+{team1:'Saudi Arabia',score1:1,team2:'Uruguay',score2:1},
+{team1:'Spain',score1:0,team2:'Cabo Verde',score2:0},
+{team1:'Iran',score1:2,team2:'New Zealand',score2:2},
+{team1:'Belgium',score1:1,team2:'Egypt',score2:1},
+{team1:'Sweden',score1:5,team2:'Tunisia',score2:1},
+{team1:'Netherlands',score1:2,team2:'Japan',score2:2},
+{team1:"Côte d'Ivoire",score1:1,team2:'Ecuador',score2:0},
+{team1:'Germany',score1:7,team2:'Curaçao',score2:1},
+{team1:'Australia',score1:2,team2:'Türkiye',score2:0},
+{team1:'USA',score1:4,team2:'Paraguay',score2:1},
+{team1:'Scotland',score1:1,team2:'Haiti',score2:0},
+{team1:'Brazil',score1:1,team2:'Morocco',score2:1},
+{team1:'Qatar',score1:1,team2:'Switzerland',score2:1},
+{team1:'Canada',score1:1,team2:'Bosnia and Herzegovina',score2:1},
+{team1:'Korea Republic',score1:2,team2:'Czechia',score2:1},
+{team1:'Mexico',score1:2,team2:'South Africa',score2:0}
+];
+
+const teamFlags={
+'Mexico':'🇲🇽','South Africa':'🇿🇦','Korea Republic':'🇰🇷','Czechia':'🇨🇿','Belgium':'🇧🇪','Egypt':'🇪🇬','Iran':'🇮🇷','New Zealand':'🇳🇿',
+'Canada':'🇨🇦','Switzerland':'🇨🇭','Qatar':'🇶🇦','Bosnia and Herzegovina':'🇧🇦','Spain':'🇪🇸','Uruguay':'🇺🇾','Saudi Arabia':'🇸🇦','Cabo Verde':'🇨🇻',
+'Brazil':'🇧🇷','Morocco':'🇲🇦','Scotland':'🏴󠁧󠁢󠁳󠁣󠁴󠁿','Haiti':'🇭🇹','France':'🇫🇷','Senegal':'🇸🇳','Norway':'🇳🇴','Iraq':'🇮🇶',
+'USA':'🇺🇸','Paraguay':'🇵🇾','Australia':'🇦🇺','Türkiye':'🇹🇷','Argentina':'🇦🇷','Algeria':'🇩🇿','Austria':'🇦🇹','Jordan':'🇯🇴',
+'Germany':'🇩🇪',"Côte d'Ivoire":"🇨🇮",'Ecuador':'🇪🇨','Curaçao':'🇨🇼','Portugal':'🇵🇹','Colombia':'🇨🇴','Uzbekistan':'🇺🇿','DR Congo':'🇨🇬',
+'Netherlands':'🇳🇱','Japan':'🇯🇵','Sweden':'🇸🇪','Tunisia':'🇹🇳','England':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','Croatia':'🇭🇷','Ghana':'🇬🇭','Panama':'🇵🇦'
+};
+
+const familyStandings=[
+{name:'Jade',pts:12,gd:0,gf:14,groups:['Group D','Group J'],teams:['USA','Paraguay','Australia','Türkiye','Argentina','Algeria','Austria','Jordan']},
+{name:'Cloe',pts:10,gd:0,gf:17,groups:['Group F','Group L'],teams:['Netherlands','Japan','Sweden','Tunisia','England','Croatia','Ghana','Panama']},
+{name:'Henry',pts:10,gd:0,gf:13,groups:['Group E','Group K'],teams:['Germany',"Côte d'Ivoire",'Ecuador','Curaçao','Portugal','Colombia','Uzbekistan','DR Congo']},
+{name:'Anton',pts:10,gd:0,gf:12,groups:['Group C','Group I'],teams:['Brazil','Morocco','Scotland','Haiti','France','Senegal','Norway','Iraq']},
+{name:'Michelle',pts:8,gd:0,gf:11,groups:['Group A','Group G'],teams:['Mexico','South Africa','Korea Republic','Czechia','Belgium','Egypt','Iran','New Zealand']},
+{name:'Caleb',pts:4,gd:0,gf:6,groups:['Group B','Group H'],teams:['Canada','Switzerland','Qatar','Bosnia and Herzegovina','Spain','Uruguay','Saudi Arabia','Cabo Verde']}
+];
+
+function renderLeaderboard(){const el=document.getElementById('leaderTiles');el.innerHTML='';familyStandings.forEach(p=>{const div=document.createElement('div');div.className='tile';div.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center"><div><h3>${p.name}</h3><div class="kv">${p.groups.join(' + ')}</div></div><div style="text-align:right"><div class="big">${p.pts}</div><div class="kv">pts</div></div></div><div style="margin-top:8px" class="kv">GD ${p.gd} · GF ${p.gf}</div>`;div.onclick=()=>openFocus(p.name);el.appendChild(div)})}
+function renderMatches(){const el=document.getElementById('matchesList');el.innerHTML='';matchResults.forEach(m=>{const flag1=teamFlags[m.team1]||'';const flag2=teamFlags[m.team2]||'';const row=document.createElement('div');row.className='match-row';row.innerHTML=`<span><span class="flag">${flag1}</span>${m.team1}</span><span>${m.score1}-${m.score2}</span><span><span class="flag">${flag2}</span>${m.team2}</span>`;el.appendChild(row)})}
+function openFocus(name){const panel=document.getElementById('focus');const p=familyStandings.find(x=>x.name===name);if(!p){panel.style.display='none';return}document.getElementById('focusName').textContent=p.name;document.getElementById('focusGroups').textContent=p.groups.join(' and ');const tiles=document.getElementById('focusTiles');tiles.innerHTML='';tiles.innerHTML=`<div class="tile"><h3>Points</h3><p class="big">${p.pts}</p></div><div class="tile"><h3>Goal diff</h3><p class="big">${p.gd>0?'+':''}${p.gd}</p></div><div class="tile"><h3>Goals</h3><p class="big">${p.gf}</p></div><div class="tile"><h3>Teams</h3><p class="kv">${p.teams.join(', ')}</p></div>`;panel.style.display='block';panel.scrollTop=0}
 function closeFocus(){document.getElementById('focus').style.display='none'}
-function populateSelect(){const sel=document.getElementById('matchTeam');sel.innerHTML=participants.flatMap(p=>p.teams.map(t=>`<option value="${t}">${t} · ${p.name}</option>`)).join('')}
-function download(){const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),matchLog},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='matches.json';a.click();URL.revokeObjectURL(a.href)}
 document.getElementById('leaderTiles').addEventListener('click',e=>{const t=e.target.closest('.tile');if(t){const name=t.querySelector('h3').textContent;openFocus(name)}});
 document.getElementById('closeFocus').addEventListener('click',closeFocus);
-document.getElementById('matchForm').addEventListener('submit',e=>{e.preventDefault();const entry={team:document.getElementById('matchTeam').value,opponent:document.getElementById('opponent').value,goalsFor:+document.getElementById('goalsFor').value,goalsAgainst:+document.getElementById('goalsAgainst').value,stage:document.getElementById('stage').value};matchLog.push(entry);renderLeaderboard();document.getElementById('matchForm').reset()});
-document.getElementById('download').addEventListener('click',download);
-renderLeaderboard();populateSelect();
+renderLeaderboard();renderMatches();
 </script>
 </body>
 </html>
