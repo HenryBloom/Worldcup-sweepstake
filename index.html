@@ -92,8 +92,8 @@ const teamFlags={
 };
 
 const API_KEY = 'zwc_free_4ed9f776b2637c01390c0ae7';
+let currentStandings = [];
 
-// Fetch matches from Zafronix API
 async function fetchMatches() {
   try {
     const response = await fetch('https://api.zafronix.com/fifa/worldcup/v1/tournaments/2026/matches', {
@@ -107,7 +107,6 @@ async function fetchMatches() {
   }
 }
 
-// Calculate family points from API results
 function calculateFamilyStandings(matches) {
   const family = {
     'Michelle': ['Mexico','South Africa','Korea Republic','Czechia','Belgium','Egypt','Iran','New Zealand'],
@@ -146,7 +145,7 @@ function calculateFamilyStandings(matches) {
     return { gd, gf };
   }
   
-  const standings = {};
+  const standingsData = {};
   for (const [name, teams] of Object.entries(family)) {
     let pts = 0, totalGD = 0, totalGF = 0;
     for (const t of teams) {
@@ -155,21 +154,19 @@ function calculateFamilyStandings(matches) {
       totalGD += gd;
       totalGF += gf;
     }
-    standings[name] = { name, pts, gd: totalGD, gf: totalGF };
+    standingsData[name] = { name, pts, gd: totalGD, gf: totalGF };
   }
   
-  return Object.entries(standings)
+  return Object.entries(standingsData)
     .map(x => x[1])
     .sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
 }
 
-// Render matches from API data
 function renderMatchesFromAPI(matches) {
   const finished = matches.filter(m => m.status === 'finished');
   const el = document.getElementById('matchesList');
   el.innerHTML = '';
   
-  // Sort by match date (newest first)
   finished.sort((a, b) => new Date(b.date) - new Date(a.date));
   
   finished.forEach(m => {
@@ -182,8 +179,8 @@ function renderMatchesFromAPI(matches) {
   });
 }
 
-// Render leaderboard from API-calculated standings
 function renderLeaderboardFromAPI(standings) {
+  currentStandings = standings;
   const el = document.getElementById('leaderTiles');
   el.innerHTML = '';
   standings.forEach(p => {
@@ -195,7 +192,6 @@ function renderLeaderboardFromAPI(standings) {
   });
 }
 
-// Main update function
 async function updateAll() {
   const matches = await fetchMatches();
   if (matches.length === 0) return;
@@ -205,14 +201,26 @@ async function updateAll() {
   renderLeaderboardFromAPI(standings);
 }
 
-// Initial load and auto-update every 10 minutes
-updateAll();
-setInterval(updateAll, 10 * 60 * 1000);
+function openFocus(name){
+  const panel=document.getElementById('focus');
+  const p=participants.find(x=>x.name===name);
+  if(!p){panel.style.display='none';return}
+  document.getElementById('focusName').textContent=p.name;
+  document.getElementById('focusGroups').textContent=p.groups.join(' and ');
+  const tiles=document.getElementById('focusTiles');
+  tiles.innerHTML='';
+  const apiStats=currentStandings.find(x=>x.name===name)||{pts:0,gd:0,gf:0};
+  tiles.innerHTML=`<div class="tile"><h3>Points</h3><p class="big">${apiStats.pts}</p></div><div class="tile"><h3>Goal diff</h3><p class="big">${apiStats.gd>0?'+':''}${apiStats.gd}</p></div><div class="tile"><h3>Goals</h3><p class="big">${apiStats.gf}</p></div><div class="tile"><h3>Teams</h3><p class="kv">${p.teams.join(', ')}</p></div>`;
+  panel.style.display='block';
+  panel.scrollTop=0
+}
 
-function openFocus(name){const panel=document.getElementById('focus');const p=participants.find(x=>x.name===name);if(!p){panel.style.display='none';return}document.getElementById('focusName').textContent=p.name;document.getElementById('focusGroups').textContent=p.groups.join(' and ');const tiles=document.getElementById('focusTiles');tiles.innerHTML='';const stats=participants.find(x=>x.name===name);const apiStats=calculateFamilyStandings([]).find(x=>x.name===name)||{pts:0,gd:0,gf:0};tiles.innerHTML=`<div class="tile"><h3>Points</h3><p class="big">${apiStats.pts}</p></div><div class="tile"><h3>Goal diff</h3><p class="big">${apiStats.gd>0?'+':''}${apiStats.gd}</p></div><div class="tile"><h3>Goals</h3><p class="big">${apiStats.gf}</p></div><div class="tile"><h3>Teams</h3><p class="kv">${stats.teams.join(', ')}</p></div>`;panel.style.display='block';panel.scrollTop=0}
 function closeFocus(){document.getElementById('focus').style.display='none'}
+
 document.getElementById('leaderTiles').addEventListener('click',e=>{const t=e.target.closest('.tile');if(t){const name=t.querySelector('h3').textContent;openFocus(name)}});
 document.getElementById('closeFocus').addEventListener('click',closeFocus);
+updateAll();
+setInterval(updateAll, 10 * 60 * 1000);
 </script>
 </body>
 </html>
