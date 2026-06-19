@@ -85,4 +85,3 @@ jobs:
           git add matches.json standings.json
           git diff --cached --quiet || git commit -m "Update World Cup data"
           git push
-
