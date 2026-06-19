@@ -4,7 +4,7 @@
 Static GitHub Pages site with data refreshed by GitHub Actions.
 
 # Files
-`index.html` - front end
+-`index.html` - front end
 `matches.json` - latest finished matches
 `standings.json` - latest family standings
 `.github/workflows/update-scores.yml` - scheduled update job
