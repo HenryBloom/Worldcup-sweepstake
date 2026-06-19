@@ -1,1 +1,88 @@
+name: Update World Cup data
+
+on:
+  schedule:
+    - cron: '0,30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch data
+        env:
+          ZWC_API_KEY: ${{ secrets.ZWC_API_KEY }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          key = os.environ['ZWC_API_KEY']
+          req = urllib.request.Request(
+              'https://api.zafronix.com/fifa/worldcup/v1/tournaments/2026/matches',
+              headers={'X-API-Key': key, 'Accept': 'application/json'}
+          )
+          with urllib.request.urlopen(req, timeout=30) as r:
+              data = json.load(r)
+          matches = data.get('matches', data if isinstance(data, list) else [])
+          finished = [m for m in matches if str(m.get('status','')).lower() in ('finished','complete','completed','ft')]
+          finished.sort(key=lambda m: m.get('date',''), reverse=True)
+          with open('matches.json','w',encoding='utf-8') as f:
+              json.dump(finished, f, ensure_ascii=False, indent=2)
+          PY
+
+      - name: Build standings
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          matches = json.loads(Path('matches.json').read_text(encoding='utf-8'))
+          family = {
+            'Michelle':['Mexico','South Africa','Korea Republic','Czechia','Belgium','Egypt','Iran','New Zealand'],
+            'Caleb':['Canada','Switzerland','Qatar','Bosnia and Herzegovina','Spain','Uruguay','Saudi Arabia','Cabo Verde'],
+            'Anton':['Brazil','Morocco','Scotland','Haiti','France','Senegal','Norway','Iraq'],
+            'Jade':['USA','Paraguay','Australia','Türkiye','Argentina','Algeria','Austria','Jordan'],
+            'Henry':['Germany',"Côte d'Ivoire",'Ecuador','Curaçao','Portugal','Colombia','Uzbekistan','DR Congo'],
+            'Cloe':['Netherlands','Japan','Sweden','Tunisia','England','Croatia','Ghana','Panama']
+          }
+          flagmap = {'United States':'USA'}
+          def norm(x): return flagmap.get(x, x)
+          def pts_for(team):
+            team = norm(team)
+            pts=0
+            for m in matches:
+              t1=norm(m['team1']['name']); t2=norm(m['team2']['name']); s1=m['team1']['score']; s2=m['team2']['score']
+              if t1==team and s1>s2: pts += 3
+              elif t2==team and s2>s1: pts += 3
+              elif (t1==team or t2==team) and s1==s2: pts += 1
+            return pts
+          def gdgf(team):
+            team = norm(team)
+            gd=gf=0
+            for m in matches:
+              t1=norm(m['team1']['name']); t2=norm(m['team2']['name']); s1=m['team1']['score']; s2=m['team2']['score']
+              if t1==team: gd += s1-s2; gf += s1
+              if t2==team: gd += s2-s1; gf += s2
+            return gd,gf
+          out=[]
+          for name, teams in family.items():
+            pts=sum(pts_for(t) for t in teams)
+            gd=sum(gdgf(t)[0] for t in teams)
+            gf=sum(gdgf(t)[1] for t in teams)
+            out.append({'name':name,'pts':pts,'gd':gd,'gf':gf})
+          out.sort(key=lambda x:(x['pts'],x['gd'],x['gf']), reverse=True)
+          Path('standings.json').write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding='utf-8')
+          PY
+
+      - name: Commit files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add matches.json standings.json
+          git diff --cached --quiet || git commit -m "Update World Cup data"
+          git push
 
